@@ -1,0 +1,83 @@
+body {
+  margin: 0px; /* Es es espacio de el contenido de la pagina al borde de la pagina */
+}
+
+.fog {
+    z-index: 50;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100% ; 
+    width: 100%; 
+    background-color: #00000063;
+  }
+  div.pop-up {
+    position: fixed;
+    z-index: 100;
+    background-color: red;
+    height: 50%;
+    width: 50%;
+    top: 25%;
+    left: 25%;
+    text-align: center;
+  }
+
+
+div.sticky-header {
+    z-index: 0;
+    width: 100%;
+    height: 10px;
+    font-size: medium;
+   margin-left: 10px;
+   
+    color: black;
+    left: 0 !important;
+    top: 0;
+    position: sticky;
+    background-color: rgb(118, 200, 206);
+    /* padding-bottom: 20px; */
+    /* padding-top: 35px; */
+    
+    -webkit-box-shadow: 11px 7px 8px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 11px 7px 8px 0px rgba(0,0,0,1);
+    box-shadow: 11px 7px 8px 0px rgba(0,0,0,1);
+  }
+
+
+@media only screen and (max-width: 599px) {
+    
+  header {
+    top: 0;
+    position: sticky;
+    font-size: 20px;
+    text-align: center;
+    padding: 30px;
+  }
+  div {
+    z-index: 0;
+    display: inline-block;
+    height: 300px;
+    width: 100%;
+    color: #6f00ff;
+    text-align: center;
+    background-color: cadetblue;
+    padding: 20px;
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  header {
+    font-size: 30px;
+    padding: 30px;
+  }
+  div {
+    z-index: 0;
+    display: inline-block;
+    height: 300px;
+    width: 25%;
+    color: #6f00ff;
+    background-color: cadetblue;
+    padding: 20px;
+    margin-bottom: 5px;
+  }
+}
