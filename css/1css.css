@@ -1,10 +1,47 @@
 body {
-  background-color: #00bfff;
+  background-color: #ffffff;
 }
 
 
 #main-news span{
 position: absolute;
 
+
+}
+
+.icon{
+
+
+  height: 55px;
+
+  width: 55px;
+}
+.bg-dark {
+  background-color: #ffffff ;
+}
+
+
+.navbar-dark .navbar-brand#azulado {
+
+  font-family: 'Oleo Script', cursive;
+margin-left: 10px;
+font-size: 40px;
+  color:#000000;
+}
+.navbar-dark .navbar-brand#azulado:hover {
+
+  font-family: 'Oleo Script', cursive;
+
+font-size: 40px;
+  color:#919191;
+}
+.gato{
+
+  height: 55px;
+
+  width: 55px;
+border-radius: 100px;
+
+position: sticky;
 
 }
