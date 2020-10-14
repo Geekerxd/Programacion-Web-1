@@ -1,0 +1,32 @@
+.Subtitles{
+    font-family: 'Roboto', sans-serif;
+  color: #275D8C;
+  margin-top: 50px;
+
+  /*
+  border-bottom: solid 1px #275d8c3b;
+    border: solid 2px#0000009a ;
+    */
+  text-align: center;
+
+  }
+
+  body{
+
+
+    background-color: #ffffff;
+  }
+
+  .icon{
+      /*
+      object-fit: cover;
+      align-items: center;
+      width: 100px;
+      border: solid 2px#0000009a ;
+      */
+      height: 100px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+  }
