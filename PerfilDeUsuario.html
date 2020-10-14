@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PerfilDeUsuario</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/perfildeusuario.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <span style="margin-right: 10px; color: blue; font-size: 30px">
+      <i class="fas fa-fan"></i>
+    </span>
+
+    <a class="navbar-brand" href="#">KineCine</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Secciones
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Ultimas noticias</a>
+            <a class="dropdown-item" href="#">Noticias importantes</a>
+            <a class="dropdown-item" href="#">Todas las noticias</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Celebridades</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Clásicos</a>
+            <a class="dropdown-item" href="#">Accion</a>
+            <a class="dropdown-item" href="#">Aventura</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Reviews
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Reciente Avtividad</a>
+            <a class="dropdown-item" href="#">Lista Films</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar cosas..." aria-label="search" />
+
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="container2" style="background-color: white;">
+      <img class="card-img-top" src="https://assets.sensacine.com/skin/img/userprofile-cover-default-43b92a5c13.png"
+      alt="Card image cap">
+      <img class="avatar" src="https://avatars1.githubusercontent.com/u/42399052?s=460&u=0b978a86f4d92461be5c55ce335df2dcf6bbb4a7&v=4" alt="avatar">
+      <span class="tooltiptext">Editar</span>
+      <h2 class="username">Diego Flores <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F29849" width="24px" height="24px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> </h2>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="inicio-tab" data-toggle="tab" href="#inicio" role="tab" aria-controls="inicio" aria-selected="true">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="noticias-tab" data-toggle="tab" href="#noticias" role="tab" aria-controls="noticias" aria-selected="false">Mis noticias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="informacion-tab" data-toggle="tab" href="#informacion" role="tab" aria-controls="informacion" aria-selected="false">Información</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="ajustes-tab" data-toggle="tab" href="#ajustes" role="tab" aria-controls="ajustes" aria-selected="false">Ajustes</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="inicio" role="tabpanel" aria-labelledby="inicio-tab">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://cnet1.cbsistatic.com/img/IIrUqG6HhZogVkw5G6Z2Lpx30e8=/940x0/2020/06/20/ed17b381-622d-4ec4-98a9-393017a23381/dune-2020-remake-4.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="noticias" role="tabpanel" aria-labelledby="noticias-tab">
+          <button type="button" class="btn btn-primary" id="gotogestor" style="margin-right:auto; margin-left: auto;" onclick="location.href='CMS.html'"> Gestor de noticias </button>
+          <div class="card">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Ver</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Ver</a>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">Descripción</div>
+        <div class="tab-pane fade" id="ajustes" role="tabpanel" aria-labelledby="ajustes-tab">
+          <form class="ajustes">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">ID de Usuario</label>
+                <div class="col-sm-10">
+                  <input class="form-control" id="inputEmail3" placeholder="ID">
+                 </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                  <input  class="form-control" id="inputEmail3" placeholder="Nombre">
+                 </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Apellido</label>
+                <div class="col-sm-10">
+                  <input  class="form-control" id="inputEmail3" placeholder="Apellido">
+                 </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Descripción</label>
+              <div class="col-sm-10">
+                <input  class="form-control" id="inputEmail3" placeholder="Descripción">
+               </div>
+          </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="colFormLabel" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Nueva Contraseña</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Confirmar Contraseña</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña">
+                </div>
+            </div>
+          </form>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
