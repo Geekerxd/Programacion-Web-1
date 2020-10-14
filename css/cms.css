@@ -1,0 +1,29 @@
+div.scontainer{
+    position:fixed;
+    max-width: 25%;
+    padding: 10px;
+}
+div.acontainer{
+    position: relative;
+    max-width: 75%; 
+    margin: 0 auto; 
+    padding: 10px; 
+    margin-left: auto;
+}
+svg.estado{
+    position: absolute;
+    right: 10px;
+}
+div.card-header{
+    position: relative;
+    height: 65px;
+}
+button.btn-danger{
+    position: absolute;
+    right: 10px;
+}
+button.btn-success{
+    position: absolute;
+    right: 100px;
+}
+
