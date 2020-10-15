@@ -15,6 +15,7 @@ span.tooltiptext{
     margin-top: 250px;
     padding: 10px 0;
     right: 0;
+    
     z-index: 1;
 }
 span.tooltiptext::after {
@@ -28,16 +29,25 @@ span.tooltiptext::after {
   border-color: transparent transparent #F29849 transparent;
 }
 img.avatar{
-    position: absolute;
+    position: relative;
     opacity: 1;
     border: 3px solid white;
     border-radius: 50%;
-    padding: -5px;
+    /*
+    padding: 0px;
     display: block;
-    margin-top: -100px;
     margin-left: -50px;
-    left: 50%;
+    
     width: 15%;
+    */
+    
+    margin-top: -15%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+
+
     transition: .5s ease;
     backface-visibility: hidden;
 }
@@ -64,4 +74,40 @@ form.ajustes{
     position: relative;
     right: 0;
 }
+.bg-dark {
+    background-color: #ffffff ;
+  }
+  .icon{
 
+
+    height: 55px;
+  
+    width: 55px;
+  }
+  .icon-link {
+    margin-left: 10px;
+    max-height: 60px;
+    border-radius: 100px;
+  }
+  
+  .icon-link:hover {
+    margin-left: 10px;
+    max-height: 70px;
+    border-radius: 100px;
+  }  
+
+  
+.navbar-dark .navbar-brand#azulado {
+
+    font-family: 'Oleo Script', cursive;
+  margin-left: 10px;
+  font-size: 40px;
+    color:#204C73;
+  }
+  .navbar-dark .navbar-brand#azulado:hover {
+  
+    font-family: 'Oleo Script', cursive;
+  
+  font-size: 40px;
+    color:#919191;
+  }
