@@ -5860,6 +5860,7 @@ button.close {
   position: relative;
   width: 100%;
   overflow: hidden;
+  /*height: 500px;*/
 }
 
 .carousel-item {
