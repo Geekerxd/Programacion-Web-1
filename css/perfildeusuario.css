@@ -135,3 +135,15 @@ form.ajustes{
   font-size: 40px;
     color:#919191;
   }
+  .btn.btn-primary.uni {
+    color: #fff;
+    background-color: #204C73;
+    border-color: #204C73;
+  }
+  
+.btn.btn-primary.uni:hover {
+    color: #fff;
+    background-color: #183955;
+    border-color: #183955;
+  }
+  
