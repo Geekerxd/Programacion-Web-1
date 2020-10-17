@@ -100,16 +100,17 @@ p.fecha {
  */
 }
 .btn.btn-primary.uni {
-  color: #fff;
+  color: #fff !important;
   background-color: #204c73;
   border-color: #204c73;
 }
 
 .btn.btn-primary.uni:hover {
-  color: #fff;
+  color: #fff !important;
   background-color: #183955;
   border-color: #183955;
 }
+
 
 .badge-info.etiqueta {
   position: absolute;
@@ -128,6 +129,17 @@ i.fas:hover{
   margin-right: 10px;
   font-size: 15px;
   color: #1b3e5e;
+}
+
+i.fas.fa-search.uni {
+  margin-right: 10px;
+  font-size: 15px;
+  color: #ffffff;
+}
+i.fas.fa-search.uni:hover{
+  margin-right: 10px;
+  font-size: 15px;
+  color: #c4c4c4;
 }
 
 
@@ -181,6 +193,11 @@ color: #F29849;
 text-shadow: 2px 2px 8px #000000;
 
 }
+.carousel-inner .etiqueta{
+  /*  object-fit: cover;  */
+  text-shadow: 0px 0px  #000000;
+  
+  }
 
 .noticia .row.A-left {
  
