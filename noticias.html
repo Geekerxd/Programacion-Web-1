@@ -5,10 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noticias</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Iconos-->
+    <script
+      src="https://kit.fontawesome.com/8a399301fb.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Fonts de google:-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="css/bootstrap.css" />  
+    
+    
     <link rel="stylesheet" href="CSS/noticias.css">
+
+
+
 </head>
 <body>
+
+
+  <nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  style="border-bottom: solid 1px #275d8c59"
+>
+  <a class="navbar-brand" id="azulado" href="1index.html" :hover>
+    KineCine
+    <img
+      class="icon"
+      src=" Assets/KineCineNaranja.png "
+      alt="error-en-al-capa-8"
+    />
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="color: #275d8c"
+          >Inicio <span class="sr-only">(current)</span></a
+        >
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          style="color: #f29849"
+        >
+          Secciones
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Todas las noticias</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Celebridades</a>
+
+          <a class="dropdown-item" href="#">Rumores</a>
+          <a class="dropdown-item" href="#">Productoras</a>
+          <a class="dropdown-item" href="#">Teorías</a>
+          <a class="dropdown-item" href="#">Curiosidades</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Clásicos</a>
+          <a class="dropdown-item" href="#">Accion</a>
+          <a class="dropdown-item" href="#">Aventura</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          style="color: #f29849"
+        >
+          Reviews
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Reciente Actividad</a>
+          <a class="dropdown-item" href="#">Listas Films</a>
+          <a class="dropdown-item" href="#">Top lo mejor de lo mejor</a>
+          <a class="dropdown-item" href="#">Top lo peor de lo peor</a>
+        </div>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Buscar cosas..."
+        aria-label="search"
+      />
+
+      <button class="btn btn-primary uni"  type="submit">
+        <i class="fas fa-search uni"></i>
+      </button>
+    </form>
+
+    <a href="login.html">
+      <img class="icon-link" src="Assets/pardo.JPG" alt="..." :hover />
+    </a>
+  </div>
+</nav>
+
     <div class="container">
+      <h2 class="Subtitles">Noticias</h2>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -16,18 +145,18 @@
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#"><i class="far fa-surprise"></i> Lo mejor <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Popular</a>
+                  <a class="nav-link" href="#"><i class="fab fa-hotjar"></i> Popular</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nuevo</a>
+                    <a class="nav-link" href="#"><i class="fas fa-bahai"></i> Nuevo</a>
                   </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filtrar
+                    <i class="fas fa-filter"></i> Filtrar
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Alfabeticamente</a>
@@ -37,12 +166,11 @@
                   </div>
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              
             </div>
           </nav>
+
+
         <div class="list-group">
             <li class="list-group-item list-group-item-dark">Categorías</li>
             <button type="button" class="list-group-item list-group-item-action active">
@@ -58,24 +186,164 @@
             <button type="button" class="list-group-item list-group-item-action">Terror</button>
             <button type="button" class="list-group-item list-group-item-action">Clásico</button>
         </div>
+        <!-- Aquí ? -->
         
-        <nav aria-label="..." class="pag">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">Previous</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item active"></li>
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
+       
+
+    <!--                     -->
+    <!--      Noticias       -->
+    <!--                     -->
+    <div class="container">
+     
+
+      <div class="noticia">
+        <span class="badge badge-info etiqueta">Peliculas</span>
+        <div class="inline-flex">
+          <img class="img" src="https://img.cinemablend.com/filter:scale/quill/0/5/d/4/3/7/05d437f057866c5f7bd647d58bbc49603c13c5e5.jpg?mw=600" />
+
+          <div class="texto"><!--  Tarjeta-texto-->
+
+
+            <p style="margin-top: 0px">
+              <strong>
+                ¿El éxito de Real Steel de Netflix ha generado nuevas esperanzas de secuela? Esto es lo que dijo el director
+              </strong>
+            </p>
+            <p class="lead" style="font-size: 15px">
+              La vida de una película como Real Steel, del director Shawn Levy, solía ser un asunto sencillo. Bajo el modelo más tradicional que se basó únicamente en el lanzamiento de videos caseros y teatrales
+              
+            </p>
+            <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
+
+
+
+          </div>
+        </div>
+        <div class="row A-left">
+          <i class="fas fa-hand-point-up" :hover>10.5k</i>
+          <i class="fas fa-hand-point-down" :hover>4.1k</i>
+          <i class="fas fa-comment" :hover>25</i>
+          <i class="fas fa-ellipsis-h" :hover></i>
+          <p class="fecha">9 octubre, 2020</p>
+        </div>
+      </div>
+
+      <div class="noticia">
+        <span class="badge badge-info etiqueta">Actores</span>
+        <div class="inline-flex">
+          <img class="img" style="  object-position: 0% 25%;"
+          src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/2/4/d/6/0/3/24d603f66ebcbec26cb5dc57fc7a80591b5aeafa.jpg"
+           />
+
+          <div class="texto"><!--  Tarjeta-texto-->
+
+
+            <p style="margin-top: 0px">
+              <strong>
+                Michael B. Jordan de Black Panther ha subido a una película de DC
+              </strong>
+            </p>
+            <p class="lead" style="font-size: 15px">
+              El papel de villano más icónico de Michael B. Jordan como Killmonger de Black Panther puede haber sido de corta duración en el MCU, pero eso no significa que haya terminado con el género del cómic todavía.
+              
+            </p>
+            <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
+
+
+
+          </div>
+        </div>
+        <div class="row A-left">
+          <i class="fas fa-hand-point-up" :hover>10.5k</i>
+          <i class="fas fa-hand-point-down" :hover>4.1k</i>
+          <i class="fas fa-comment" :hover>25</i>
+          <i class="fas fa-ellipsis-h" :hover></i>
+          <p class="fecha">5 octubre, 2020</p>
+        </div>
+      </div>
+      <div class="noticia">
+        <span class="badge badge-info etiqueta">Controversia</span>
+        <div class="inline-flex">
+          <img class="img"  style="  object-position: 0% 15%;"
+          src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/3/2/d/4/f/4/32d4f4b86a9f335a43175006b475668b40fb165b.jpg" />
+
+          <div class="texto"><!--  Tarjeta-texto-->
+
+
+            <p style="margin-top: 0px">
+              <strong>
+                One Thing Top Gun definitivamente 'robó' a los pilotos de combate reales
+              </strong>
+            </p>
+            <p class="lead" style="font-size: 15px">
+              Naturalmente, Top Gun de 1986 hizo grandes esfuerzos para garantizar que el vuelo se viera lo más realista posible, pero esa no era la única forma en que la función dirigida por Tom Cruise representaba con precisión la vida de un piloto de la Marina de los EE.
+              
+            </p>
+            <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
+
+
+
+          </div>
+        </div>
+        <div class="row A-left">
+          <i class="fas fa-hand-point-up" :hover>10.5k</i>
+          <i class="fas fa-hand-point-down" :hover>4.1k</i>
+          <i class="fas fa-comment" :hover>25</i>
+          <i class="fas fa-ellipsis-h" :hover></i>
+          <p class="fecha">2 octubre, 2020</p>
+        </div>
+      </div>
+      <div class="noticia">
+        <span class="badge badge-info etiqueta">Peliculas</span>
+        <div class="inline-flex">
+          <img class="img"  style="  object-position: 0% 25%;"
+          src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/4/d/0/6/5/e/4d065e07cdfcb525f4f14570c84e1a85e110f750.png" />
+
+          <div class="texto"><!--  Tarjeta-texto-->
+
+
+            <p style="margin-top: 0px">
+              <strong>
+                La directora de Wonder Woman, Patty Jenkins, habla sobre cuándo podría abrir la película
+              </strong>
+            </p>
+            <p class="lead" style="font-size: 15px">
+              La industria del entretenimiento se encuentra en un lugar único en este momento, ya que innumerables proyectos se han retrasado en medio de problemas de salud global.
+              
+            </p>
+            <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
+
+
+
+          </div>
+        </div>
+        <div class="row A-left">
+          <i class="fas fa-hand-point-up" :hover>10.5k</i>
+          <i class="fas fa-hand-point-down" :hover>4.1k</i>
+          <i class="fas fa-comment" :hover>25</i>
+          <i class="fas fa-ellipsis-h" :hover></i>
+          <p class="fecha">29 septiembre, 2020</p>
+        </div>
+      </div>
+
     </div>
 
+
+    <nav aria-label="..." class="pag">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"></li>
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
 
 
 
