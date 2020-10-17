@@ -1,0 +1,41 @@
+.Subtitles {
+    font-family: "Roboto", sans-serif;
+    color: #204C73 ;
+    margin-top: 50px;
+  
+    /*
+    border-bottom: solid 1px #275d8c3b;
+      border: solid 2px#0000009a ;
+      */
+    text-align: center;
+  }
+  
+  body {
+    background-color: #ffffff;
+  }
+  
+  .icon {
+    /*
+        object-fit: cover;
+        align-items: center;
+        width: 100px;
+        border: solid 2px#0000009a ;
+        */
+    height: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  .container.peque{
+  margin-top: 25px;
+  width: 25%;
+  
+  }
+
+  .btn.btn-lg.btn-primary.btn-block{
+
+background-color: #275D8C;
+border-color: #275D8C;
+  }
