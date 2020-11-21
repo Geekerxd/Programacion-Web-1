@@ -44,6 +44,23 @@ public class usuario {
         this.phoneNumb = phoneNumb;
 
     }
+      public usuario(int iduser, String email, String nombre, String apellidos, String usutype,String username ) {
+        this.iduser = iduser;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.username = username;
+        this.usutype = usutype;
+    }
+    public usuario(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+     public usuario(int iduser, String email) {
+         this.iduser = iduser;
+        this.email = email;
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -71,6 +88,10 @@ public class usuario {
 
     public int getIduser() {
         return iduser;
+    }
+
+    public String getUsutype() {
+        return usutype;
     }
 
     public void setNombre(String nombre) {

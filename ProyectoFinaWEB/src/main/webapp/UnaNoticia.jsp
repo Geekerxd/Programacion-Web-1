@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="css/ej-noticia.css" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
         
         
         

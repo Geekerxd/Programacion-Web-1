@@ -37,7 +37,7 @@
 
                 <div class="form-label-group">
                     <label for="inputEmail">Correo Electrónico</label>
-                    <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Ingrese aquí su correo" required autofocus>
+                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Ingrese aquí su correo" required autofocus>
 
                 </div>
 

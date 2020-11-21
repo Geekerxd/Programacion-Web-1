@@ -4,6 +4,10 @@ use db_proyect_pw1
 CALL sp_insertausuarios("Ricardo", "aguilar gallegos", "rico@rico.com", "rico123","ricoG3000",12345678);
 select * from usuario
 
+CALL sp_LogInUser("rico@rico.com","rico123");
+
+
+
 /*
  `nombre` VARCHAR(45) NULL,
   `apellidos` VARCHAR(45) NULL,
@@ -46,6 +50,17 @@ VALUES
 (pNombre,pApellidos,pEmail,pPassword,pNombreUsu,pPhoneNum);
 
 END
-  
+
+-- log in sp ------------------------------
+  CREATE PROCEDURE `sp_LogInUser` (
+IN `pCorreo` varchar(45),
+IN `pContrasena` varchar(45)
+)
+BEGIN
+select idusuario,email,nombre,apellidos,tipoUsu,nombreUsu
+from usuario
+where email = pCorreo
+and password = pContrasena;
+END
   
   

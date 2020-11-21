@@ -34,6 +34,12 @@
 
     </head>
     <body>
+        
+        <h3>ID: <%=  session.getAttribute("ELidusuarios") %></h3>
+        <h3>Correo: <%=  session.getAttribute("ELcorreo") %></h3>
+        <h3>Nombre: <%=  session.getAttribute("ELnombre") %></h3>
+        <h3>Apellidos: <%=  session.getAttribute("LOSapellidos") %></h3>
+
         <!--  <a  href="https://www.artstation.com/artwork/L35Dew" target="_blank" >Hola mundo!</a>
         -->
 
