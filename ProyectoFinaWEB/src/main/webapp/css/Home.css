@@ -212,14 +212,21 @@ width: 75%;
   position: static;
 
 }
-
-
 .btn-primary.SignIn{
   margin-left: 15px; 
   
+  
 }
-.signin-text{
+.btn-primary.SignIn a{
+ color: white;
+  
+}
+.LogIn-text{
 
   color: #F29849;
   margin-left: 20px; 
+}
+a.LogIn-text {
+ color: #F29849;
+ 
 }
