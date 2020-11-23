@@ -11,154 +11,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home KineCine Page</title>
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Iconos-->
-        <script
-            src="https://kit.fontawesome.com/8a399301fb.js"
-            crossorigin="anonymous"
-        ></script>
-        <!-- Fonts de google:-->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap"
-            rel="stylesheet"
-            />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap"
-            rel="stylesheet"
-            />
-
-        <!--bootstrap-->
-        <link rel="stylesheet" href="css/bootstrap.css" />
+        <jsp:include page="header.jsp"/>
+        
         <link rel="stylesheet" href="css/Home.css" />
 
     </head>
     <body>
-        
-        <h3>ID: <%=  session.getAttribute("ELidusuarios") %></h3>
+        <div style="display: none;"> <!-- style="display: block;"-->
+             <h3>ID: <%=  session.getAttribute("ELidusuarios") %></h3>
         <h3>Correo: <%=  session.getAttribute("ELcorreo") %></h3>
         <h3>Nombre: <%=  session.getAttribute("ELnombre") %></h3>
         <h3>Apellidos: <%=  session.getAttribute("LOSapellidos") %></h3>
+        
+        <h3>Tipo de Usuario: <%=  session.getAttribute("ELtipousu") %></h3>
+        <h3>Nombre de usuario: <%=  session.getAttribute("ELusername") %></h3>
+        <h3>Foto: <%=  session.getAttribute("Lafoto") %></h3>
+        </div>
+       
 
         <!--  <a  href="https://www.artstation.com/artwork/L35Dew" target="_blank" >Hola mundo!</a>
         -->
 
         <!-- esto es la barra de navegacion -->
 
-        <nav
-            class="navbar navbar-expand-lg navbar-dark bg-dark"
-            style="border-bottom: solid 1px #275d8c59"
-            >
-            <a class="navbar-brand" id="azulado" href="1index.html" :hover>
-                KineCine
-                <img
-                    class="icon"
-                    src=" Assets/KineCineNaranja.png "
-                    alt="error-en-al-capa-8"
-                    />
-            </a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" style="color: #275d8c"
-                           >Inicio <span class="sr-only">(current)</span></a
-                        >
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style="color: #f29849"
-                            >
-                            Secciones
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Todas las noticias</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Celebridades</a>
-
-                            <a class="dropdown-item" href="#">Rumores</a>
-                            <a class="dropdown-item" href="#">Productoras</a>
-                            <a class="dropdown-item" href="#">Teorías</a>
-                            <a class="dropdown-item" href="#">Curiosidades</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Clásicos</a>
-                            <a class="dropdown-item" href="#">Accion</a>
-                            <a class="dropdown-item" href="#">Aventura</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            style="color: #f29849"
-                            >
-                            Reviews
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Reciente Actividad</a>
-                            <a class="dropdown-item" href="#">Listas Films</a>
-                            <a class="dropdown-item" href="#">Top lo mejor de lo mejor</a>
-                            <a class="dropdown-item" href="#">Top lo peor de lo peor</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <form class="form-inline my-2 my-lg-0">
-                    <input
-                        class="form-control mr-sm-2"
-                        type="search"
-                        placeholder="Buscar cosas..."
-                        aria-label="search"
-                        />
-
-                    <button class="btn btn-primary uni"  type="submit">
-                        <i class="fas fa-search uni"></i>
-                    </button>
-                </form>
-              
-                
-                <a href="LogIn.jsp" class="LogIn-text " >
-                    Log In
-                </a>
-               
-                <button type="button"
-                        class="btn btn-primary SignIn"
-                        >     
-                    <a href="SignIn.jsp">Sign In</a>
-                    
-                </button>
-                <!--
-                 <a href="login.html">
-                    <img class="icon-link" src="Assets/pardo.JPG" alt="..." :hover />
-                </a>-->
-
-            </div>
-        </nav>
+        <jsp:include page="NavBar.jsp"/>
 
         <!-- container-fluid --><!-- data="hover" -->
         <div class="container" style="margin-top: 50px">

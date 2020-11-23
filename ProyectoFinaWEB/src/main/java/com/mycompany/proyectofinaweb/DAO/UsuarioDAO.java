@@ -59,9 +59,39 @@ public class UsuarioDAO {
             String apellidos=  result.getString("apellidos");
             String tipoUsu=  result.getString("tipoUsu");
             String nombreUsu=  result.getString("nombreUsu");
+             String foto=  result.getString("picture");
             
+            return new usuario (IDusu,email,name,apellidos,tipoUsu,nombreUsu,foto);
             
-            return new usuario (IDusu,email,name,apellidos,tipoUsu,nombreUsu);
+            }
+            
+            return null;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+    public static usuario LogInUserByUsername(usuario theUser) {
+
+        try {
+            Connection con = DbConection.getConnection();
+
+            CallableStatement callable = con.prepareCall("CALL sp_LogInUserByUsername (?,?);");
+
+            callable.setString(1, theUser.getEmail());
+            callable.setString(2, theUser.getPassword());
+
+            ResultSet result =callable.executeQuery();
+            while(result.next()){
+            int IDusu=  result.getInt("idusuario");
+            String email=  result.getString("email");
+            String name=  result.getString("nombre");
+            String apellidos=  result.getString("apellidos");
+            String tipoUsu=  result.getString("tipoUsu");
+            String nombreUsu=  result.getString("nombreUsu");
+            String foto=  result.getString("picture");
+            
+            return new usuario (IDusu,email,name,apellidos,tipoUsu,nombreUsu,foto);
             
             }
             

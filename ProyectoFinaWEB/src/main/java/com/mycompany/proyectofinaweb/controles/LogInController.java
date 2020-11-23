@@ -41,16 +41,27 @@ public class LogInController extends HttpServlet {
         usuario theUser = new usuario(email, password);
 
         usuario LogUser = UsuarioDAO.LogInUser(theUser);
-        if (LogUser != null) {
-
+        usuario LogUserUsername = UsuarioDAO.LogInUserByUsername(theUser);
+        if (LogUser != null || LogUserUsername != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("ELcorreo", LogUser.getEmail());
-            session.setAttribute("ELidusuarios", LogUser.getIduser());
-            session.setAttribute("ELnombre", LogUser.getNombre());
-            session.setAttribute("LOSapellidos", LogUser.getApellidos());
-            session.setAttribute("ELtipousu", LogUser.getUsutype());
-            session.setAttribute("ELusername", LogUser.getUsername());
-            
+            if (LogUser != null) {
+                session.setAttribute("ELcorreo", LogUser.getEmail());
+                session.setAttribute("ELidusuarios", LogUser.getIduser());
+                session.setAttribute("ELnombre", LogUser.getNombre());
+                session.setAttribute("LOSapellidos", LogUser.getApellidos());
+                session.setAttribute("ELtipousu", LogUser.getUsutype());
+                session.setAttribute("ELusername", LogUser.getUsername());
+                session.setAttribute("Lafoto", LogUser.getFoto());
+            } else if (LogUserUsername != null) {
+                session.setAttribute("ELcorreo", LogUserUsername.getEmail());
+                session.setAttribute("ELidusuarios", LogUserUsername.getIduser());
+                session.setAttribute("ELnombre", LogUserUsername.getNombre());
+                session.setAttribute("LOSapellidos", LogUserUsername.getApellidos());
+                session.setAttribute("ELtipousu", LogUserUsername.getUsutype());
+                session.setAttribute("ELusername", LogUserUsername.getUsername());
+                session.setAttribute("Lafoto", LogUserUsername.getFoto());
+            }
+
             response.sendRedirect("index.jsp");
         } else {
             response.sendRedirect("UnaNoticia.jsp");

@@ -19,6 +19,7 @@ public class usuario {
     private String username;
     private int phoneNumb;
     private String usutype;
+     private String foto;
 
     public usuario() {
     }
@@ -44,13 +45,14 @@ public class usuario {
         this.phoneNumb = phoneNumb;
 
     }
-      public usuario(int iduser, String email, String nombre, String apellidos, String usutype,String username ) {
+      public usuario(int iduser, String email, String nombre, String apellidos, String usutype,String username, String foto ) {
         this.iduser = iduser;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.username = username;
         this.usutype = usutype;
+        this.foto=foto;
     }
     public usuario(String email, String password) {
         this.email = email;
@@ -59,6 +61,14 @@ public class usuario {
      public usuario(int iduser, String email) {
          this.iduser = iduser;
         this.email = email;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getFoto() {
+        return foto;
     }
 
 

@@ -5,6 +5,8 @@ CALL sp_insertausuarios("Ricardo", "aguilar gallegos", "rico@rico.com", "rico123
 select * from usuario
 
 CALL sp_LogInUser("rico@rico.com","rico123");
+CALL sp_LogInUserByUsername("bobg3000","bob123");
+
 
 
 
