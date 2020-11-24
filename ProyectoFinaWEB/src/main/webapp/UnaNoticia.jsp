@@ -3,6 +3,11 @@
     Created on : 21/11/2020, 09:40:44 AM
     Author     : Dell 66895
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
+<%
+    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

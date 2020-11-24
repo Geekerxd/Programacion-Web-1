@@ -3,6 +3,12 @@
     Created on : 22/11/2020, 09:23:19 PM
     Author     : Dell 66895
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
+
+<%
+    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,35 +63,47 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-Nueva" role="tabpanel"
                          aria-labelledby="v-pills-Nueva-tab">
-                        <form>
+                        <form action="AddNewsController" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="inputTitulo" class="col-sm-2 col-form-label">Título</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputTitulo"
+                                    <input type="text" name="title" class="form-control" id="inputTitulo"
                                            placeholder="Título de la noticia">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputDescripción" class="col-sm-2 col-form-label">Descripción</label>
+                                <label for="inputContenido" class="col-sm-2 col-form-label">Contenido</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputDescripción"
-                                           placeholder="Descripción corta">
+                                    <textarea type="text" name="contenido" class="form-control" id="inputContenido"
+                                              placeholder="Contenido"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputNoticia" class="col-sm-2 col-form-label">Noticia</label>
+                                <label for="inputDescripción" class="col-sm-2 col-form-label">Descripción corta</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputNoticia" placeholder="Noticia">
+                                    <textarea type="text" name="descripcion" class="form-control" id="inputDescripción"
+                                              placeholder="Descripción corta"></textarea>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <label for="inputCategoria" class="col-sm-2 col-form-label">Categoría</label>
                                 <div class="col-sm-10">
-                                    <select id="inputCategoria" class="form-control">
+                                    <select id="inputCategoria" name="category" class="form-control">
                                         <option selected>Escoge una categoría</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
+
+                                        <option value="2">2</option>
+                                        <!-- <option>1</option> -->
+                                        <%
+                                            if (categories != null) {
+                                                for (Categoria category : categories) {
+                                        %>
+                                        <option value="<%= category.getID()%>"><%= category.getCategoryName()%></option>
+                                        <%
+                                                }
+                                            }
+                                        %>
+
                                     </select>
                                 </div>
                             </div>
@@ -107,10 +125,14 @@
                                     <label class="custom-file-label" for="inputGroupFile01">Abrir archivos</label>
                                 </div>
                             </div>
-                            <button type="solicitar" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar">
-                                Solicitar
-                            </button>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Enviar">
+                                <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->
+                            </div>
+                            
                         </form>
+
+
                         <div class="modal fade" id="solicitudenviada" tabindex="-1" role="dialog" aria-labelledby="solicitudenviada" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
