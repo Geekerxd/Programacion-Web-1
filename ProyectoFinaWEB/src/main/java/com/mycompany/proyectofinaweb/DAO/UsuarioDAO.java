@@ -24,7 +24,7 @@ public class UsuarioDAO {
         try {
             Connection con = DbConection.getConnection();
 
-            CallableStatement callable = con.prepareCall("CALL sp_insertausuarios(?, ?, ?, ?,?,?);");
+            CallableStatement callable = con.prepareCall("CALL sp_insertausuarios(?, ?, ?, ?,?,?,?);");
 
             callable.setString(1, theUser.getNombre());
             callable.setString(2, theUser.getApellidos());
@@ -32,6 +32,7 @@ public class UsuarioDAO {
             callable.setString(4, theUser.getPassword());
             callable.setString(5, theUser.getUsername());
             callable.setInt(6, theUser.getPhoneNumb());
+            callable.setInt(7, theUser.getIDusutype());
 
             return callable.executeUpdate();
         } catch (SQLException ex) {
@@ -57,11 +58,11 @@ public class UsuarioDAO {
             String email=  result.getString("email");
             String name=  result.getString("nombre");
             String apellidos=  result.getString("apellidos");
-            String tipoUsu=  result.getString("tipoUsu");
+            int IDtipo=  result.getInt("fktipousuario");
             String nombreUsu=  result.getString("nombreUsu");
              String foto=  result.getString("picture");
             
-            return new usuario (IDusu,email,name,apellidos,tipoUsu,nombreUsu,foto);
+            return new usuario (IDusu,email,name,apellidos,IDtipo,nombreUsu,foto);
             
             }
             
@@ -87,11 +88,11 @@ public class UsuarioDAO {
             String email=  result.getString("email");
             String name=  result.getString("nombre");
             String apellidos=  result.getString("apellidos");
-            String tipoUsu=  result.getString("tipoUsu");
+           int IDtipo=  result.getInt("fktipousuario");
             String nombreUsu=  result.getString("nombreUsu");
             String foto=  result.getString("picture");
             
-            return new usuario (IDusu,email,name,apellidos,tipoUsu,nombreUsu,foto);
+            return new usuario (IDusu,email,name,apellidos,IDtipo,nombreUsu,foto);
             
             }
             

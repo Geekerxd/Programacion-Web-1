@@ -34,7 +34,15 @@
     rel="stylesheet"
     />
 <!--bootstrap-->
+
+
+
+
 <link rel="stylesheet" href="css/bootstrap.css" />
+
+
+
+
   <!-- Iconos-->
     <script
       src="https://kit.fontawesome.com/8a399301fb.js"
@@ -49,3 +57,18 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap"
       rel="stylesheet"
     />
+     <!-- Iconos-->
+    <script
+      src="https://kit.fontawesome.com/8a399301fb.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Fonts de google:-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap"
+      rel="stylesheet"
+    />
+

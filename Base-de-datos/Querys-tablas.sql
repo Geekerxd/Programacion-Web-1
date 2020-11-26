@@ -1,12 +1,6 @@
 use db_proyect_pw1
 
 
-CALL sp_insertausuarios("Ricardo", "aguilar gallegos", "rico@rico.com", "rico123","ricoG3000",12345678);
-select * from usuario
-
-CALL sp_LogInUser("rico@rico.com","rico123");
-CALL sp_LogInUserByUsername("bobg3000","bob123");
-
 
 
 
@@ -64,5 +58,13 @@ from usuario
 where email = pCorreo
 and password = pContrasena;
 END
+
+
+CREATE TABLE `categoria` (
+  `idcategoria` int NOT NULL AUTO_INCREMENT,
+  `contenido` varchar(45) NOT NULL,
+  PRIMARY KEY (`idcategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
   
   

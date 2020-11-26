@@ -4,7 +4,15 @@
     Author     : Dell 66895
 --%>
 
+
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<%
+    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,27 +20,27 @@
         <title>Home KineCine Page</title>
 
         <jsp:include page="header.jsp"/>
-        
+
         <link rel="stylesheet" href="css/Home.css" />
 
     </head>
     <body>
         <div style="display: none;"> <!-- style="display: block;"-->
-             <h3>ID: <%=  session.getAttribute("ELidusuarios") %></h3>
-        <h3>Correo: <%=  session.getAttribute("ELcorreo") %></h3>
-        <h3>Nombre: <%=  session.getAttribute("ELnombre") %></h3>
-        <h3>Apellidos: <%=  session.getAttribute("LOSapellidos") %></h3>
-        
-        <h3>Tipo de Usuario: <%=  session.getAttribute("ELtipousu") %></h3>
-        <h3>Nombre de usuario: <%=  session.getAttribute("ELusername") %></h3>
-        <h3>Foto: <%=  session.getAttribute("Lafoto") %></h3>
+            <h3>ID: <%=  session.getAttribute("ELidusuarios")%></h3>
+            <h3>Correo: <%=  session.getAttribute("ELcorreo")%></h3>
+            <h3>Nombre: <%=  session.getAttribute("ELnombre")%></h3>
+            <h3>Apellidos: <%=  session.getAttribute("LOSapellidos")%></h3>
+
+            <h3>Tipo de Usuario: <%=  session.getAttribute("ELtipousu")%></h3>
+            <h3>Nombre de usuario: <%=  session.getAttribute("ELusername")%></h3>
+            <h3>Foto: <%=  session.getAttribute("Lafoto")%></h3>
         </div>
-       
+
 
         <!--  <a  href="https://www.artstation.com/artwork/L35Dew" target="_blank" >Hola mundo!</a>
         -->
 
-        <!-- esto es la barra de navegacion -->
+        
 
         <jsp:include page="NavBar.jsp"/>
 

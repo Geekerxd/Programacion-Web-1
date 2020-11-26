@@ -2,14 +2,19 @@
     Document   : NavBar
     Created on : 22/11/2020, 08:29:05 PM
     Author     : Dell 66895
---%>
-
+--%><%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+<%
+    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+%>
 <nav
     class="navbar navbar-expand-lg navbar-dark bg-dark"
     style="border-bottom: solid 1px #275d8c59"
     >
-    <a class="navbar-brand" id="azulado" href="index.jsp" :hover>
+    <a class="navbar-brand" id="azulado" href="NavBarCategory" :hover>
         KineCine
         <img
             class="icon"
@@ -51,18 +56,24 @@
                     Secciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Todas las noticias</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Celebridades</a>
 
-                    <a class="dropdown-item" href="#">Rumores</a>
-                    <a class="dropdown-item" href="#">Productoras</a>
-                    <a class="dropdown-item" href="#">Teorías</a>
-                    <a class="dropdown-item" href="#">Curiosidades</a>
+                    <a class="dropdown-item" href="todasNewsController">Todas las noticias</a>
+
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Clásicos</a>
-                    <a class="dropdown-item" href="#">Accion</a>
-                    <a class="dropdown-item" href="#">Aventura</a>
+
+                    <%
+                        //if (categories != null) {
+                            for (Categoria category : categories) {
+                    %>
+                    <a class="dropdown-item" href="#"><%= category.getCategoryName()%></a>
+                    <%
+                            }
+                        //}
+                    %>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Otros...</a>
+                   
                 </div>
             </li>
 
@@ -104,29 +115,29 @@
         <% if (session.getAttribute("ELtipousu") == null) { %>
 
 
-        <a href="LogIn.jsp" class="LogIn-text " >
+        <a href="LogIn.jsp" class="LogIn-text " style="color: #F29849; margin-left: 20px; " >
             Log In
         </a>
 
         <button type="button"
-                class="btn btn-primary SignIn"
+                class="btn btn-primary SignIn" style="margin-left: 15px; "
                 >     
-            <a href="SignIn.jsp">Sign In</a>
+            <a href="SignIn.jsp" style="color: white;">Sign In</a>
 
         </button>
 
         <% } else {  %>
 
-        <a href="perfilUsuario.jsp" style=" margin-left: 20px;" >
-             <% if (session.getAttribute("Lafoto") == null) { %>
+        <a href="perfilUsuarioController" style=" margin-left: 20px;" >
+            <% if (session.getAttribute("Lafoto") == null) { %>
             <img class="icon-link" src="Assets/NoPhoto2.jpg" alt="..." :hover />
-            <%}else{ %>
+            <%} else { %>
             <img class="icon-link" src="Assets/pardo.JPG" alt="..." :hover />
             <% }%>
-            
-            <p style="color: #275D8C; margin-bottom: 0px">  <%= session.getAttribute("ELusername") %></p>
+
+            <p style="color: #275D8C; margin-bottom: 0px">  <%= session.getAttribute("ELusername")%></p>
         </a>
-        
+
         <%}%>
     </div>
 </nav>

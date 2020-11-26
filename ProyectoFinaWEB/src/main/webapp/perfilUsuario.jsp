@@ -3,6 +3,11 @@
     Created on : 22/11/2020, 09:47:32 PM
     Author     : Dell 66895
 --%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
+<%
+    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -156,7 +161,7 @@
                             class="btn btn-primary"
                             id="gotogestor"
                             style="margin-right: auto; margin-left: auto"
-                            onclick="location.href = 'CMS.html'"
+                            onclick="location.href = 'AddNewsController'"
                             >
                             Gestor de noticias
                         </button>

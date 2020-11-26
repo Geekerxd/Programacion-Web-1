@@ -49,7 +49,7 @@ public class LogInController extends HttpServlet {
                 session.setAttribute("ELidusuarios", LogUser.getIduser());
                 session.setAttribute("ELnombre", LogUser.getNombre());
                 session.setAttribute("LOSapellidos", LogUser.getApellidos());
-                session.setAttribute("ELtipousu", LogUser.getUsutype());
+                session.setAttribute("ELtipousu", LogUser.getIDusutype());
                 session.setAttribute("ELusername", LogUser.getUsername());
                 session.setAttribute("Lafoto", LogUser.getFoto());
             } else if (LogUserUsername != null) {
@@ -57,14 +57,14 @@ public class LogInController extends HttpServlet {
                 session.setAttribute("ELidusuarios", LogUserUsername.getIduser());
                 session.setAttribute("ELnombre", LogUserUsername.getNombre());
                 session.setAttribute("LOSapellidos", LogUserUsername.getApellidos());
-                session.setAttribute("ELtipousu", LogUserUsername.getUsutype());
+                session.setAttribute("ELtipousu", LogUserUsername.getIDusutype());
                 session.setAttribute("ELusername", LogUserUsername.getUsername());
                 session.setAttribute("Lafoto", LogUserUsername.getFoto());
             }
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("NavBarCategory");
         } else {
-            response.sendRedirect("UnaNoticia.jsp");
+            response.sendRedirect("todasNewsController");
         }
 
     }
