@@ -21,13 +21,14 @@ public class Noticia {
     private int idEditor;
     private int idCreador;
     private int idAdmin;
-    private int idCategoria;
+   
+    private Categoria category;
      private String descripcion;
 
     public Noticia() {
     }
 
-    public Noticia(int id, String title, int visitas, String fecha, String contenido, int estado, int likes, int dislikes, int idEditor, int idCreador, int idAdmin, int idCategoria, String descripcion) {
+    public Noticia(int id, String title, int visitas, String fecha, String contenido, int estado, int likes, int dislikes, int idEditor, int idCreador, int idAdmin,Categoria category, String descripcion) {
         this.id = id;
         this.title = title;
         this.visitas = visitas;
@@ -39,16 +40,16 @@ public class Noticia {
         this.idEditor = idEditor;
         this.idCreador = idCreador;
         this.idAdmin = idAdmin;
-        this.idCategoria = idCategoria;
+        this.category = category;
         this.descripcion=descripcion;
     }
- public Noticia(String title,String contenido,String descripcion,  int idEditor,  int idCategoria) {
+ public Noticia(String title,String contenido,String descripcion,  int idEditor, Categoria category) {
     
         this.title = title;
         this.contenido = contenido;
         this.descripcion=descripcion;
         this.idEditor = idEditor;
-        this.idCategoria = idCategoria;
+         this.category = category;
         
     }
     public String getContenido() {
@@ -99,12 +100,12 @@ public class Noticia {
         this.idAdmin = idAdmin;
     }
 
-    public int getIdCategoria() {
-        return idCategoria;
+    public Categoria getCategoria() {
+        return category;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setIdCategoria(Categoria category) {
+        this.category = category;
     }
 
     public int getIdCreador() {

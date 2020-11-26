@@ -14,7 +14,7 @@
     class="navbar navbar-expand-lg navbar-dark bg-dark"
     style="border-bottom: solid 1px #275d8c59"
     >
-    <a class="navbar-brand" id="azulado" href="index.jsp" :hover>
+    <a class="navbar-brand" id="azulado" href="NavBarCategory" :hover>
         KineCine
         <img
             class="icon"
@@ -57,18 +57,18 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item" href="AllNoticias.jsp">Todas las noticias</a>
+                    <a class="dropdown-item" href="todasNewsController">Todas las noticias</a>
 
                     <div class="dropdown-divider"></div>
 
                     <%
-                        if (categories != null) {
+                        //if (categories != null) {
                             for (Categoria category : categories) {
                     %>
                     <a class="dropdown-item" href="#"><%= category.getCategoryName()%></a>
                     <%
                             }
-                        }
+                        //}
                     %>
 
                     <div class="dropdown-divider"></div>
@@ -128,7 +128,7 @@
 
         <% } else {  %>
 
-        <a href="perfilUsuario.jsp" style=" margin-left: 20px;" >
+        <a href="perfilUsuarioController" style=" margin-left: 20px;" >
             <% if (session.getAttribute("Lafoto") == null) { %>
             <img class="icon-link" src="Assets/NoPhoto2.jpg" alt="..." :hover />
             <%} else { %>

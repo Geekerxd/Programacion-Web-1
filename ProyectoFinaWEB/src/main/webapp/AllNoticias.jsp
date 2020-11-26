@@ -10,9 +10,6 @@
 
 
 
-<%
-    List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
-%>
 
 <!DOCTYPE html>
 <html>

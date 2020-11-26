@@ -5,6 +5,7 @@
  */
 package com.mycompany.proyectofinaweb.DAO;
 
+import com.mycompany.proyectofinaweb.modelos.Categoria;
 import com.mycompany.proyectofinaweb.modelos.Noticia;
 import com.mycompany.proyectofinaweb.utls.DbConection;
 import java.sql.CallableStatement;
@@ -26,18 +27,17 @@ public class NoticiaDAO {
         Connection con = null;
         try {
             con = DbConection.getConnection();
-            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?,?,?,?);";
+            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?,?,?);";
             CallableStatement statement = con.prepareCall(sql);
 
             statement.setString(1, news.getTitle());
-            statement.setString(2, news.getFecha());
-            statement.setString(3, news.getContenido());
-            statement.setString(4, news.getDescripcion());
-            statement.setInt(5, news.getEstado());
-            statement.setInt(6, news.getIdEditor());
-            statement.setInt(7, news.getIdCreador());
-            statement.setInt(8, news.getIdAdmin());
-            statement.setInt(9, news.getIdCategoria());
+            statement.setString(2, news.getContenido());
+            statement.setString(3, news.getDescripcion());
+            statement.setInt(4, 1);//news.getEstado()
+            statement.setInt(5, 1);// news.getIdEditor()
+            statement.setInt(6, 1);//news.getIdCreador()
+            statement.setInt(7, 1);//news.getIdAdmin()
+            statement.setInt(8, news.getCategoria().getID());
 
             //statement.setString(4, news.getImagePath());
             return statement.executeUpdate();
@@ -77,10 +77,11 @@ public class NoticiaDAO {
                 int idCreador = result.getInt(10);
                 int idAdmin = result.getInt(11);
                 int idCategoria = result.getInt(12);
+                Categoria category = categoryDAO.getCategories(idCategoria);
                 String descri = result.getString(13);
 
                 news.add(new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,
-                        idEditor, idCreador, idAdmin, idCategoria, descri));
+                        idEditor, idCreador, idAdmin, category, descri));
 
             }
             return news;

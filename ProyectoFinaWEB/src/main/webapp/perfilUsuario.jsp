@@ -161,7 +161,7 @@
                             class="btn btn-primary"
                             id="gotogestor"
                             style="margin-right: auto; margin-left: auto"
-                            onclick="location.href = 'CMS.jsp'"
+                            onclick="location.href = 'AddNewsController'"
                             >
                             Gestor de noticias
                         </button>

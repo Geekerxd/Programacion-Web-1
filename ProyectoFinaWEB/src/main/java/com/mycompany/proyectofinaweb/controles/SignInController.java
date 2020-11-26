@@ -42,11 +42,11 @@ public class SignInController extends HttpServlet {
         String phoneNumb = request.getParameter("phoneNumb");
         int phoneN = Integer.parseInt(phoneNumb);
 
-        usuario theUser = new usuario(name, apellidos, email, password1, username, phoneN);
+        usuario theUser = new usuario(name, apellidos, email, password1, username, phoneN,2);
         if (UsuarioDAO.signInUser(theUser) == 1) {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("NavBarCategory");
         } else {
-            response.sendRedirect("UnaNoticia.jsp");
+            response.sendRedirect("todasNewsController");
 
         }
 

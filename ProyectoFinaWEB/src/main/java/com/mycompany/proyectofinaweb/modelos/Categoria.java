@@ -20,7 +20,11 @@ public class Categoria {
         this.ID = ID;
         this.CategoryName = CategoryName;
     }
-
+ public Categoria(int ID) {
+        this.ID = ID;
+    }
+ 
+ 
     public int getID() {
         return ID;
     }

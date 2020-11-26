@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import javax.servlet.http.Part;
  * @author Dell 66895
  */
 @WebServlet(name = "AddNewsController", urlPatterns = {"/AddNewsController"})
+@MultipartConfig(maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 25)
 public class AddNewsController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -38,6 +40,7 @@ public class AddNewsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+     
         List<Categoria> categories = categoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         request.getRequestDispatcher("CMS.jsp").forward(request, response);
@@ -58,10 +61,10 @@ public class AddNewsController extends HttpServlet {
         String title = request.getParameter("title");
         String contenido = request.getParameter("contenido");
         String description = request.getParameter("descripcion");
-        int idCategory =0;// Integer.parseInt(request.getParameter("category"), 10)
+        int idCategory = Integer.parseInt(request.getParameter("category"), 10);
         int idUsuario=4;
         //aqui se busca la ID del editor/creador
-        int idEditor=0;
+        int idEditor=1;
         //Part file = request.getPart("image");
 
         //String path = request.getServletContext().getRealPath("");
@@ -69,12 +72,12 @@ public class AddNewsController extends HttpServlet {
         // String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
         //String fullPath = path  + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
         //file.write(fullPath);
-        Noticia newNews = new Noticia(title, contenido,description,idEditor,idCategory);
+        Noticia newNews = new Noticia(title, contenido,description,idEditor,new Categoria(idCategory) );
         NoticiaDAO.insertNews(newNews);
 
-        //List<Category> categories = CategoryDAO.getCategories();
+        List<Categoria> categories = categoryDAO.getCategories();
         List<Noticia> news = NoticiaDAO.getNews();
-        //request.setAttribute("Categories", categories);
+        request.setAttribute("Categories", categories);
         request.setAttribute("News", news);
 
         request.getRequestDispatcher("index.jsp").forward(request, response);

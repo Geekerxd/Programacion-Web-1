@@ -12,6 +12,11 @@
         <title>Sign In Page</title>
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel="stylesheet" href="css/login.css" />
+        
+         <script src="js/signinValidation.js" type="text/javascript"></script>
+         
+         
+         
     </head>
     <body>
         <div class="container">
@@ -30,7 +35,7 @@
         </div>
 
         <div class="container peque">
-            <form action="SignInController" method="POST" class="form-signin"  >
+            <form name="signinForm" action="SignInController" method="POST" class="form-signin" onsubmit=" return Validacion()" >
 
                 <div class="form-label-group">
                     <label for="input">Nombre(s)</label>

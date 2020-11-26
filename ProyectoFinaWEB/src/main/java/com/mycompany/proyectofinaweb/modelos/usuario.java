@@ -19,7 +19,8 @@ public class usuario {
     private String username;
     private int phoneNumb;
     private String usutype;
-     private String foto;
+    private int IDusutype;
+    private String foto;
 
     public usuario() {
     }
@@ -45,21 +46,35 @@ public class usuario {
         this.phoneNumb = phoneNumb;
 
     }
-      public usuario(int iduser, String email, String nombre, String apellidos, String usutype,String username, String foto ) {
+
+    public usuario(String nombre, String apellidos, String email, String password, String username, int phoneNumb, int IDusutype) {
+
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.phoneNumb = phoneNumb;
+        this.IDusutype = IDusutype;
+    }
+
+    public usuario(int iduser, String email, String nombre, String apellidos, int idtype, String username, String foto) {
         this.iduser = iduser;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.username = username;
-        this.usutype = usutype;
-        this.foto=foto;
+        this.IDusutype = idtype;
+        this.foto = foto;
     }
+
     public usuario(String email, String password) {
         this.email = email;
         this.password = password;
     }
-     public usuario(int iduser, String email) {
-         this.iduser = iduser;
+
+    public usuario(int iduser, String email) {
+        this.iduser = iduser;
         this.email = email;
     }
 
@@ -70,7 +85,6 @@ public class usuario {
     public String getFoto() {
         return foto;
     }
-
 
     public String getNombre() {
         return nombre;
@@ -126,6 +140,14 @@ public class usuario {
 
     public void setPhoneNumb(int phoneNumb) {
         this.phoneNumb = phoneNumb;
+    }
+
+    public void setIDusutype(int IDusutype) {
+        this.IDusutype = IDusutype;
+    }
+
+    public int getIDusutype() {
+        return IDusutype;
     }
 
 }

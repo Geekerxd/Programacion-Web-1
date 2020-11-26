@@ -56,5 +56,34 @@ public class categoryDAO {
 
         return unaListaC;
     }
+    
+    public static Categoria getCategories(int idCategory) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_GetCategoriesID(?);";
+            CallableStatement statement = con.prepareCall(sql);
+            statement.setInt(1, idCategory);
+            ResultSet result = statement.executeQuery();
 
+            while (result.next()) {
+                int id = result.getInt(1);
+                String name = result.getString(2);
+                
+                
+                return new Categoria(id, name);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(categoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
 }

@@ -41,7 +41,7 @@ CREATE TABLE `noticia` (
 
 
 
-
+INSERT INTO categoria(`contenido`) VALUES( "Actores");
 INSERT INTO categoria(`contenido`) VALUES( "peliculas");
 INSERT INTO categoria(`contenido`) VALUES( "Animación");
 INSERT INTO categoria(`contenido`) VALUES( "Rumores");
@@ -60,6 +60,10 @@ select * from noticia
 select * from usuario
 select * from editor
 select * from creador
+select * from admin
+CALL `db_proyect_pw1`.`sp_GetCategoriesID`(2);
+select * from categoria
+
 
 INSERT INTO `db_proyect_pw1`.`editor`
 (
@@ -68,6 +72,18 @@ VALUES
 ( 4);
 
 
+
+
+---------------------
+INSERT INTO `db_proyect_pw1`.`creador`
+(`idusuariofk`)
+VALUES
+(6);
+
+INSERT INTO `db_proyect_pw1`.`admin`
+(`idusuariofk`)
+VALUES
+(7);
 
 
 

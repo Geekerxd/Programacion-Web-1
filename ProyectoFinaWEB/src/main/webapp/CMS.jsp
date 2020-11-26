@@ -9,7 +9,6 @@
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
 %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -89,21 +88,15 @@
                             <div class="form-group row">
                                 <label for="inputCategoria" class="col-sm-2 col-form-label">Categoría</label>
                                 <div class="col-sm-10">
-                                    <select id="inputCategoria" name="category" class="form-control">
-                                        <option selected>Escoge una categoría</option>
-
-                                        <option value="2">2</option>
-                                        <!-- <option>1</option> -->
+                                    <select id="inputCategoria" name="category"  class="form-control">
+                                         <option value="-1">Escoge una categoría</option>
                                         <%
-                                            if (categories != null) {
-                                                for (Categoria category : categories) {
+                                            for (Categoria category : categories) {
                                         %>
                                         <option value="<%= category.getID()%>"><%= category.getCategoryName()%></option>
                                         <%
-                                                }
                                             }
-                                        %>
-
+                                        %> 
                                     </select>
                                 </div>
                             </div>
@@ -129,7 +122,7 @@
                                 <input type="submit" class="btn btn-primary" value="Enviar">
                                 <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->
                             </div>
-                            
+
                         </form>
 
 

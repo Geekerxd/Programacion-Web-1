@@ -5,24 +5,27 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.categoryDAO;
+import com.mycompany.proyectofinaweb.modelos.Categoria;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Dell 66895
  */
-@WebServlet(name = "LogOffController", urlPatterns = {"/LogOffController"})
-public class LogOffController extends HttpServlet {
+@WebServlet(name = "CMScontroller", urlPatterns = {"/CMScontroller"})
+public class CMScontroller extends HttpServlet {
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -30,11 +33,11 @@ public class LogOffController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        response.sendRedirect("NavBarCategory");
+        List<Categoria> categories = categoryDAO.getCategories();
+        request.setAttribute("Categories", categories);
+        request.getRequestDispatcher("CMS.jsp").forward(request, response);
     }
 
     /**
