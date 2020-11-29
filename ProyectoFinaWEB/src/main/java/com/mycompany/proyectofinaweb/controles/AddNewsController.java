@@ -5,10 +5,13 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.ImageDAO;
 import com.mycompany.proyectofinaweb.DAO.NoticiaDAO;
 import com.mycompany.proyectofinaweb.DAO.categoryDAO;
 import com.mycompany.proyectofinaweb.modelos.Categoria;
+import com.mycompany.proyectofinaweb.modelos.Imagen;
 import com.mycompany.proyectofinaweb.modelos.Noticia;
+import com.mycompany.proyectofinaweb.utls.FileUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -40,7 +43,7 @@ public class AddNewsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+
         List<Categoria> categories = categoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         request.getRequestDispatcher("CMS.jsp").forward(request, response);
@@ -62,21 +65,31 @@ public class AddNewsController extends HttpServlet {
         String contenido = request.getParameter("contenido");
         String description = request.getParameter("descripcion");
         int idCategory = Integer.parseInt(request.getParameter("category"), 10);
-        int idUsuario=4;
-        //aqui se busca la ID del editor/creador
-        int idEditor=1;
-        //Part file = request.getPart("image");
 
-        //String path = request.getServletContext().getRealPath("");
-        //String contentType = file.getContentType();
-        // String nameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
-        //String fullPath = path  + FileUtils.RUTE_USER_IMAGE + "/" + nameImage;
-        //file.write(fullPath);
-        Noticia newNews = new Noticia(title, contenido,description,idEditor,new Categoria(idCategory) );
+        int idUsuario = Integer.parseInt(request.getParameter("idUsuario"), 10);
+        int estado = 0;//defaul
+
+        Noticia newNews = new Noticia(title, contenido, description, estado, idUsuario, new Categoria(idCategory));
         NoticiaDAO.insertNews(newNews);
-
         List<Categoria> categories = categoryDAO.getCategories();
         List<Noticia> news = NoticiaDAO.getNews();
+
+        Part file = request.getPart("image");
+
+        String path = request.getServletContext().getRealPath("");
+        String contentType = file.getContentType();
+        String NameImage = file.getName() + System.currentTimeMillis() + FileUtils.GetExtension(contentType);
+        String fullPath = path + FileUtils.RUTE_USER_IMAGE + "/" + NameImage;
+        file.write(fullPath);
+        //insertamos esto en la entidad imagen //FileUtils.RUTE_USER_IMAGE + "/" + nameImage
+
+        int idNoticia = NoticiaDAO.getIDNotiBythings(newNews);
+        if (idNoticia != 0) {
+            Imagen Laimagen = new Imagen(FileUtils.RUTE_USER_IMAGE + "/" + NameImage, idNoticia);
+            
+            ImageDAO.insertaImagen(Laimagen);
+        }
+
         request.setAttribute("Categories", categories);
         request.setAttribute("News", news);
 

@@ -19,7 +19,7 @@
 
         <link rel="stylesheet" href="css/cms.css" />
 
-        <title>Perfil de Usuario Page</title>
+        <title>CMS Page</title>
 
     </head>
     <body>
@@ -89,7 +89,7 @@
                                 <label for="inputCategoria" class="col-sm-2 col-form-label">Categoría</label>
                                 <div class="col-sm-10">
                                     <select id="inputCategoria" name="category"  class="form-control">
-                                         <option value="-1">Escoge una categoría</option>
+                                        <option value="-1">Escoge una categoría</option>
                                         <%
                                             for (Categoria category : categories) {
                                         %>
@@ -100,24 +100,28 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Imagen</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Abrir archivos</label>
-                                </div>
+                            <div> 
+                                <input type="hidden" name="idUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
+
+                            </div>   
+
+
+
+                            <div class="form-group">
+                                <label for="image">Imagen</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                                <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Video</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Abrir archivos</label>
-                                </div>
+                                
+                            <div class="form-group">
+                                <label for="image">Video</label>
+                                <input type="file" name="video" id="video" class="form-control">
+                                <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
                             </div>
+
+
+
+
                             <div class="form-group">
                                 <input type="submit" class="btn btn-primary" value="Enviar">
                                 <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->

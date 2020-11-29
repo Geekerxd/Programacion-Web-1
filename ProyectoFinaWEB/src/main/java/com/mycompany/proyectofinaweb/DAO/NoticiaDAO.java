@@ -27,17 +27,16 @@ public class NoticiaDAO {
         Connection con = null;
         try {
             con = DbConection.getConnection();
-            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?,?,?);";
+            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?);";
             CallableStatement statement = con.prepareCall(sql);
 
             statement.setString(1, news.getTitle());
             statement.setString(2, news.getContenido());
             statement.setString(3, news.getDescripcion());
-            statement.setInt(4, 1);//news.getEstado()
-            statement.setInt(5, 1);// news.getIdEditor()
-            statement.setInt(6, 1);//news.getIdCreador()
-            statement.setInt(7, 1);//news.getIdAdmin()
-            statement.setInt(8, news.getCategoria().getID());
+            statement.setInt(4, news.getEstado());//news.getEstado()
+            statement.setInt(5, news.getIdUsuario());
+
+            statement.setInt(6, news.getCategoria().getID());
 
             //statement.setString(4, news.getImagePath());
             return statement.executeUpdate();
@@ -73,15 +72,13 @@ public class NoticiaDAO {
                 int estado = result.getInt(6);
                 int likes = result.getInt(7);
                 int dislikes = result.getInt(8);
-                int idEditor = result.getInt(9);
-                int idCreador = result.getInt(10);
-                int idAdmin = result.getInt(11);
-                int idCategoria = result.getInt(12);
+                int idusuario = result.getInt(9);
+                int idCategoria = result.getInt(10);
                 Categoria category = categoryDAO.getCategories(idCategoria);
-                String descri = result.getString(13);
+                String descri = result.getString(11);
 
                 news.add(new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,
-                        idEditor, idCreador, idAdmin, category, descri));
+                        idusuario, category, descri));
 
             }
             return news;
@@ -97,6 +94,38 @@ public class NoticiaDAO {
             }
         }
         return news;
+    }
+
+    public static int getIDNotiBythings(Noticia news) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_getIDNewBythings(?,?,? );";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setString(1, news.getTitle());
+            statement.setInt(2, news.getIdUsuario());
+            statement.setInt(3, news.getCategoria().getID());//news.getEstado()
+
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt(1);
+
+                return id;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
     }
 
 }

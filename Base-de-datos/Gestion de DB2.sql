@@ -1,13 +1,10 @@
 use db_proyect_pw1_02
 
-
-
-
 select * from anonimo
 select * from comentario
 select * from comentarioeditor
-select * from imagen
-select * from noticia 
+select * from imagen;
+select * from noticia; 
 select * from noticiamarcada
 select * from notificacion
 select * from usuario
@@ -19,12 +16,13 @@ CALL `db_proyect_pw1_02`.`sp_GetCategories`();
 CALL `db_proyect_pw1_02`.`sp_GetCategoriesID`(11);
 CALL `db_proyect_pw1_02`.`sp_getNoticia`();
 CALL `db_proyect_pw1_02`.`sp_insertaNoticia`("el titulo","contenido","la descipcion", 0, 1,14);
-CALL `db_proyect_pw1_02`.`sp_insertausuarios`("alberto", "perez","alberto@alberto","alberto123", "alberto147",12345678,2);
+CALL `db_proyect_pw1_02`.`sp_insertausuarios`("alberto", "perez","alberto@alberto","alberto123", "alberto147",12345678,5);
 CALL `db_proyect_pw1_02`.`sp_LogInUser`("alberto@alberto", "alberto123");
 CALL `db_proyect_pw1_02`.`sp_LogInUserByUsername`("alberto147", "alberto123");
+CALL `db_proyect_pw1_02`.`sp_insertaImagen`("este el el path", 8);
 
 
-
+CALL `db_proyect_pw1_02`.`sp_insertaNoticia`("Nuevo noticia","contenidode noticia","la descipcion de noticia", 1, 7,9);
 
 INSERT INTO `db_proyect_pw1_02`.`usuario`
 (`nombre`,`apellidos`,`email`,`password`,`nombreUsu`,`phoneNum`,`fktipousuario`)
@@ -32,9 +30,27 @@ VALUES
 ("alberto", "perez","alberto@alberto","alberto123","alberto147",12345678,2);
 
 
+------------------------------------------------------------------------
+SELECT  `idnoticia`
+FROM  noticia
+where titulo="Nuevo noticia"AND  fecha="2020-11-29 00:00:00" AND idUsuarioFk="7" AND idCategoriaFk="9"
+;
+CALL  sp_getIDNewBythings("Nuevo noticia","7","9");
 
 
+/*
 
+    `noticia`.`titulo`,
+    `noticia`.`visitas`,
+    `noticia`.`fecha`,
+    `noticia`.`contenido`,
+    `noticia`.`estado`,
+    `noticia`.`likes`,
+    `noticia`.`dislikes`,
+    `noticia`.`idUsuarioFk`,
+    `noticia`.`idCategoriaFk`,
+    `noticia`.`descripcion`*/
+------------------------------------------------------------------------
 
 
 

@@ -18,9 +18,8 @@ public class Noticia {
     private int estado;
     private int likes;
     private int dislikes;
-    private int idEditor;
-    private int idCreador;
-    private int idAdmin;
+    private int idUsuario;
+ 
    
     private Categoria category;
      private String descripcion;
@@ -36,21 +35,42 @@ public class Noticia {
         this.contenido = contenido;
         this.estado = estado;
         this.likes = likes;
-        this.dislikes = dislikes;
-        this.idEditor = idEditor;
-        this.idCreador = idCreador;
-        this.idAdmin = idAdmin;
         this.category = category;
         this.descripcion=descripcion;
     }
+    //Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,idusuario, category, descri)
+     public Noticia(int id, String title, int visitas, String fecha, String contenido, int estado, int likes, int dislikes, int idUsuario,Categoria category, String descripcion) {
+        this.id = id;
+        this.title = title;
+        this.visitas = visitas;
+        this.fecha = fecha;
+        this.contenido = contenido;
+        this.estado = estado;
+        this.likes = likes;
+        this.dislikes=dislikes;
+        this.idUsuario=idUsuario;
+        this.category = category;
+        this.descripcion=descripcion;
+    }
+    
+    
  public Noticia(String title,String contenido,String descripcion,  int idEditor, Categoria category) {
     
         this.title = title;
         this.contenido = contenido;
         this.descripcion=descripcion;
-        this.idEditor = idEditor;
          this.category = category;
         
+    }
+ //title, contenido,description,estado,idUsuario,new Categoria(idCategory)
+  public Noticia(String title,String contenido,String descripcion,  int estado, int idusu, Categoria category) {
+    
+        this.title = title;
+        this.contenido = contenido;
+        this.descripcion=descripcion;
+         this.category = category;
+        this.estado=estado;
+        this.idUsuario=idusu;
     }
     public String getContenido() {
         return contenido;
@@ -92,13 +112,6 @@ public class Noticia {
         this.id = id;
     }
 
-    public int getIdAdmin() {
-        return idAdmin;
-    }
-
-    public void setIdAdmin(int idAdmin) {
-        this.idAdmin = idAdmin;
-    }
 
     public Categoria getCategoria() {
         return category;
@@ -108,20 +121,12 @@ public class Noticia {
         this.category = category;
     }
 
-    public int getIdCreador() {
-        return idCreador;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdCreador(int idCreador) {
-        this.idCreador = idCreador;
-    }
-
-    public int getIdEditor() {
-        return idEditor;
-    }
-
-    public void setIdEditor(int idEditor) {
-        this.idEditor = idEditor;
+    public void setIdUsuario(int idusu) {
+        this.idUsuario = idusu;
     }
 
     public int getLikes() {
