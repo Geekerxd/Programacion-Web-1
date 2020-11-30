@@ -5,8 +5,10 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.NoticiaDAO;
 import com.mycompany.proyectofinaweb.DAO.categoryDAO;
 import com.mycompany.proyectofinaweb.modelos.Categoria;
+import com.mycompany.proyectofinaweb.modelos.Noticia;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -36,9 +38,9 @@ public class NavBarCategory extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Categoria> categories = categoryDAO.getCategories();
-        // List<News> news = NewsDAO.getNews();
+        List<Noticia> news = NoticiaDAO.getNews();
         request.setAttribute("Categories", categories);
-        //request.setAttribute("News", news);
+        request.setAttribute("News", news);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 

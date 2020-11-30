@@ -27,7 +27,7 @@ public class NoticiaDAO {
         Connection con = null;
         try {
             con = DbConection.getConnection();
-            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?);";
+            String sql = "CALL sp_insertaNoticia(?,?,?,?,?,?,?);";
             CallableStatement statement = con.prepareCall(sql);
 
             statement.setString(1, news.getTitle());
@@ -37,6 +37,7 @@ public class NoticiaDAO {
             statement.setInt(5, news.getIdUsuario());
 
             statement.setInt(6, news.getCategoria().getID());
+            statement.setString(7, news.getImageThumbnail());
 
             //statement.setString(4, news.getImagePath());
             return statement.executeUpdate();
@@ -76,9 +77,9 @@ public class NoticiaDAO {
                 int idCategoria = result.getInt(10);
                 Categoria category = categoryDAO.getCategories(idCategoria);
                 String descri = result.getString(11);
-
+                String thumbnail = result.getString(12);
                 news.add(new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,
-                        idusuario, category, descri));
+                        idusuario, category, descri,thumbnail));
 
             }
             return news;

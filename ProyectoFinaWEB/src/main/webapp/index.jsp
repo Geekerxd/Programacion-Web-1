@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="com.mycompany.proyectofinaweb.modelos.Noticia"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +13,7 @@
 
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+    List<Noticia> news = (List<Noticia>) request.getAttribute("News");
 %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +42,7 @@
         <!--  <a  href="https://www.artstation.com/artwork/L35Dew" target="_blank" >Hola mundo!</a>
         -->
 
-        
+
 
         <jsp:include page="NavBar.jsp"/>
 
@@ -358,137 +360,38 @@
         <div class="container">
             <h2 class="Subtitles">Noticias Recientes</h2>
 
+
+            <%
+                for (Noticia element : news) {
+            %>
             <div class="noticia">
-                <span class="badge badge-info etiqueta">Peliculas</span>
+                <span class="badge badge-info etiqueta"><%= element.getCategoria().getCategoryName()%></span>
                 <div class="inline-flex">
                     <a  href="UnaNoticia.jsp" target="_blank">
-                        <img class="img" src="https://img.cinemablend.com/filter:scale/quill/0/5/d/4/3/7/05d437f057866c5f7bd647d58bbc49603c13c5e5.jpg?mw=600" />
+                        <img class="img" src="<%= element.getImageThumbnail()%>" alt="Assets/KineCineNaranja.png"/>
                     </a>
                     <div class="texto"><!--  Tarjeta-texto-->
 
 
                         <p style="margin-top: 0px">
-                            <strong>
-                                ¿El éxito de Real Steel de Netflix ha generado nuevas esperanzas de secuela? Esto es lo que dijo el director
-                            </strong>
+                            <strong><%= element.getTitle()%>  </strong>
                         </p>
-                        <p class="lead" style="font-size: 15px">
-                            La vida de una película como Real Steel, del director Shawn Levy, solía ser un asunto sencillo. Bajo el modelo más tradicional que se basó únicamente en el lanzamiento de videos caseros y teatrales
-
-                        </p>
-                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
-
-
-
+                        <p class="lead" style="font-size: 15px"><%= element.getDescripcion()%></p>
+                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a > 
                     </div>
                 </div>
                 <div class="row A-left">
-                    <i class="fas fa-hand-point-up" :hover>10.5k</i>
-                    <i class="fas fa-hand-point-down" :hover>4.1k</i>
-                    <i class="fas fa-comment" :hover>25</i>
+                    <i class="fas fa-hand-point-up" :hover><%= element.getLikes()%></i>
+                    <i class="fas fa-hand-point-down" :hover><%= element.getDislikes()%></i>
+                    <i class="fas fa-comment" :hover>falta</i>
                     <i class="fas fa-ellipsis-h" :hover></i>
-                    <p class="fecha">9 octubre, 2020</p>
+                    <p class="fecha"><%= element.getFecha()%></p>
                 </div>
             </div>
 
-            <div class="noticia">
-                <span class="badge badge-info etiqueta">Actores</span>
-                <div class="inline-flex">
-                    <a  href="UnaNoticia.jsp" target="_blank">
-                        <img class="img" style="  object-position: 0% 25%;"
-                             src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/2/4/d/6/0/3/24d603f66ebcbec26cb5dc57fc7a80591b5aeafa.jpg"
-                             />
-                    </a>
-                    <div class="texto"><!--  Tarjeta-texto-->
-
-
-                        <p style="margin-top: 0px">
-                            <strong>
-                                Michael B. Jordan de Black Panther ha subido a una película de DC
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            El papel de villano más icónico de Michael B. Jordan como Killmonger de Black Panther puede haber sido de corta duración en el MCU, pero eso no significa que haya terminado con el género del cómic todavía.
-
-                        </p>
-                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
-
-
-
-                    </div>
-                </div>
-                <div class="row A-left">
-                    <i class="fas fa-hand-point-up" :hover>10.5k</i>
-                    <i class="fas fa-hand-point-down" :hover>4.1k</i>
-                    <i class="fas fa-comment" :hover>25</i>
-                    <i class="fas fa-ellipsis-h" :hover></i>
-                    <p class="fecha">5 octubre, 2020</p>
-                </div>
-            </div>
-            <div class="noticia">
-                <span class="badge badge-info etiqueta">Controversia</span>
-                <div class="inline-flex">
-                    <img class="img"  style="  object-position: 0% 15%;"
-                         src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/3/2/d/4/f/4/32d4f4b86a9f335a43175006b475668b40fb165b.jpg" />
-
-                    <div class="texto"><!--  Tarjeta-texto-->
-
-
-                        <p style="margin-top: 0px">
-                            <strong>
-                                One Thing Top Gun definitivamente 'robó' a los pilotos de combate reales
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            Naturalmente, Top Gun de 1986 hizo grandes esfuerzos para garantizar que el vuelo se viera lo más realista posible, pero esa no era la única forma en que la función dirigida por Tom Cruise representaba con precisión la vida de un piloto de la Marina de los EE.
-
-                        </p>
-                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
-
-
-
-                    </div>
-                </div>
-                <div class="row A-left">
-                    <i class="fas fa-hand-point-up" :hover>10.5k</i>
-                    <i class="fas fa-hand-point-down" :hover>4.1k</i>
-                    <i class="fas fa-comment" :hover>25</i>
-                    <i class="fas fa-ellipsis-h" :hover></i>
-                    <p class="fecha">2 octubre, 2020</p>
-                </div>
-            </div>
-            <div class="noticia">
-                <span class="badge badge-info etiqueta">Peliculas</span>
-                <div class="inline-flex">
-                    <img class="img"  style="  object-position: 0% 25%;"
-                         src="https://img.cinemablend.com/cdn-cgi/image/fit=cover,w=1500,h=1500//quill/4/d/0/6/5/e/4d065e07cdfcb525f4f14570c84e1a85e110f750.png" />
-
-                    <div class="texto"><!--  Tarjeta-texto-->
-
-
-                        <p style="margin-top: 0px">
-                            <strong>
-                                La directora de Wonder Woman, Patty Jenkins, habla sobre cuándo podría abrir la película
-                            </strong>
-                        </p>
-                        <p class="lead" style="font-size: 15px">
-                            La industria del entretenimiento se encuentra en un lugar único en este momento, ya que innumerables proyectos se han retrasado en medio de problemas de salud global.
-
-                        </p>
-                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a >
-
-
-
-                    </div>
-                </div>
-                <div class="row A-left">
-                    <i class="fas fa-hand-point-up" :hover>10.5k</i>
-                    <i class="fas fa-hand-point-down" :hover>4.1k</i>
-                    <i class="fas fa-comment" :hover>25</i>
-                    <i class="fas fa-ellipsis-h" :hover></i>
-                    <p class="fecha">29 septiembre, 2020</p>
-                </div>
-            </div>
+            <%
+                }
+            %>
 
             <button
                 type="button"

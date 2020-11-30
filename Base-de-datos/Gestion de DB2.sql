@@ -12,6 +12,7 @@ select * from video
 select * from categoria
 select * from tipousuario
 
+
 CALL `db_proyect_pw1_02`.`sp_GetCategories`();
 CALL `db_proyect_pw1_02`.`sp_GetCategoriesID`(11);
 CALL `db_proyect_pw1_02`.`sp_getNoticia`();

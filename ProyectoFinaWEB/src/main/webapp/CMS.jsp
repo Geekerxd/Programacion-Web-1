@@ -9,6 +9,7 @@
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
 %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
         <jsp:include page="header.jsp"/>
 
         <link rel="stylesheet" href="css/cms.css" />
-
+        <script src="js/cms.js" type="text/javascript"></script>
         <title>CMS Page</title>
 
     </head>
@@ -52,13 +53,14 @@
                 </nav>
             </div>
         </div>
+
         <!-- 
     
         -->
 
 
         <div class="acontainer" id="acontainer">
-            <div class="container" style="background-color: white;">
+            <div class="container" style="background-color: white; padding-top: 20px;">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-Nueva" role="tabpanel"
                          aria-labelledby="v-pills-Nueva-tab">
@@ -67,28 +69,28 @@
                                 <label for="inputTitulo" class="col-sm-2 col-form-label">Título</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="title" class="form-control" id="inputTitulo"
-                                           placeholder="Título de la noticia">
+                                           placeholder="Título de la noticia" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputContenido" class="col-sm-2 col-form-label">Contenido</label>
+                                <label for="inputContenido" class="col-sm-2 col-form-label" >Contenido</label>
                                 <div class="col-sm-10">
                                     <textarea type="text" name="contenido" class="form-control" id="inputContenido"
-                                              placeholder="Contenido"></textarea>
+                                              placeholder="Contenido" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputDescripción" class="col-sm-2 col-form-label">Descripción corta</label>
                                 <div class="col-sm-10">
                                     <textarea type="text" name="descripcion" class="form-control" id="inputDescripción"
-                                              placeholder="Descripción corta"></textarea>
+                                              placeholder="Descripción corta" required></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="inputCategoria" class="col-sm-2 col-form-label">Categoría</label>
                                 <div class="col-sm-10">
-                                    <select id="inputCategoria" name="category"  class="form-control">
+                                    <select id="inputCategoria" name="category"  class="form-control" >
                                         <option value="-1">Escoge una categoría</option>
                                         <%
                                             for (Categoria category : categories) {
@@ -100,19 +102,22 @@
                                     </select>
                                 </div>
                             </div>
-                            <div> 
+                            <div> <!-- esto está oculto -->
                                 <input type="hidden" name="idUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
-
+                                <input  type="hidden" id="contador" value="2" name="elcontador">
                             </div>   
 
 
+                            <div id="increase" style=" border: 1px solid black; margin-bottom: 10px; padding: 20px;">
 
-                            <div class="form-group">
-                                <label for="image">Imagen</label>
-                                <input type="file" name="image" id="image" class="form-control">
-                                <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                                <div class="form-group" >
+                                    <label for="image">Imagen</label>
+                                    <input type="file" name="image" id="image" class="form-control" required>
+                                    <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                                </div>
                             </div>
-                                
+
+
                             <div class="form-group">
                                 <label for="image">Video</label>
                                 <input type="file" name="video" id="video" class="form-control">
@@ -128,7 +133,8 @@
                             </div>
 
                         </form>
-
+                        <button onclick="IncreaseNumberImages()"  class="btn btn-primary">Agregar otra Imágen</button>
+                        <!--   contar(); -->
 
                         <div class="modal fade" id="solicitudenviada" tabindex="-1" role="dialog" aria-labelledby="solicitudenviada" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -378,5 +384,6 @@
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>
+
     </body>
 </html>

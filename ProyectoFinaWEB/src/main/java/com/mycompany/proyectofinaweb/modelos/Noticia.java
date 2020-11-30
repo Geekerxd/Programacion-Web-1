@@ -19,7 +19,7 @@ public class Noticia {
     private int likes;
     private int dislikes;
     private int idUsuario;
- 
+  private String imageThumbnail;
    
     private Categoria category;
      private String descripcion;
@@ -39,7 +39,7 @@ public class Noticia {
         this.descripcion=descripcion;
     }
     //Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,idusuario, category, descri)
-     public Noticia(int id, String title, int visitas, String fecha, String contenido, int estado, int likes, int dislikes, int idUsuario,Categoria category, String descripcion) {
+     public Noticia(int id, String title, int visitas, String fecha, String contenido, int estado, int likes, int dislikes, int idUsuario,Categoria category, String descripcion,String thumbnail) {
         this.id = id;
         this.title = title;
         this.visitas = visitas;
@@ -51,6 +51,7 @@ public class Noticia {
         this.idUsuario=idUsuario;
         this.category = category;
         this.descripcion=descripcion;
+        this.imageThumbnail=thumbnail;
     }
     
     
@@ -63,7 +64,7 @@ public class Noticia {
         
     }
  //title, contenido,description,estado,idUsuario,new Categoria(idCategory)
-  public Noticia(String title,String contenido,String descripcion,  int estado, int idusu, Categoria category) {
+  public Noticia(String title,String contenido,String descripcion,  int estado, int idusu, Categoria category, String thumnail) {
     
         this.title = title;
         this.contenido = contenido;
@@ -71,7 +72,17 @@ public class Noticia {
          this.category = category;
         this.estado=estado;
         this.idUsuario=idusu;
+        this.imageThumbnail=thumnail;
     }
+
+    public String getImageThumbnail() {
+        return imageThumbnail;
+    }
+
+    public void setImageThumbnail(String imageThumbnail) {
+        this.imageThumbnail = imageThumbnail;
+    }
+  
     public String getContenido() {
         return contenido;
     }
