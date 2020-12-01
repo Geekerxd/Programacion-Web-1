@@ -79,7 +79,7 @@ public class NoticiaDAO {
                 String descri = result.getString(11);
                 String thumbnail = result.getString(12);
                 news.add(new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,
-                        idusuario, category, descri,thumbnail));
+                        idusuario, category, descri, thumbnail));
 
             }
             return news;
@@ -127,6 +127,80 @@ public class NoticiaDAO {
             }
         }
         return 0;
+    }
+
+    public static Noticia getNew(int idNew) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_getNoticiaByID(?);";
+            CallableStatement statement = con.prepareCall(sql);
+            statement.setInt(1, idNew);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt(1);
+                String title = result.getString(2);
+                int visitas = result.getInt(3);
+                String fecha = result.getString(4);
+                String contendido = result.getString(5);
+                int estado = result.getInt(6);
+                int likes = result.getInt(7);
+                int dislikes = result.getInt(8);
+                int idusuario = result.getInt(9);
+                int idCategoria = result.getInt(10);
+                Categoria category = categoryDAO.getCategories(idCategoria);
+                String descri = result.getString(11);
+                String thumbnail = result.getString(12);
+
+                return new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes, idusuario, category, descri, thumbnail);
+
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        }
+        return null;
+    }
+
+    public static String GetNameAutor(int idUsu) {
+        Connection con = null;
+        String Nombre= null;
+        String Apellidos=null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_traeNombresUsuarioNoticia(? );";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, idUsu);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+
+                 Nombre = result.getString(1);
+                 Apellidos= result.getString(2);
+                return Nombre +" "+ Apellidos;
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+          return Nombre +" "+  Apellidos;
     }
 
 }

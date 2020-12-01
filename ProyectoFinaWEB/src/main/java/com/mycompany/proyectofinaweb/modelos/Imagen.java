@@ -29,7 +29,12 @@ public class Imagen {
         this.imagePath = imagePath;
         this.idNoticiaFk = idNoticiaFk;
     }
-
+    
+       public Imagen(  String imagePath) {
+        
+        this.imagePath = imagePath;
+    }
+    
     public int getId() {
         return id;
     }

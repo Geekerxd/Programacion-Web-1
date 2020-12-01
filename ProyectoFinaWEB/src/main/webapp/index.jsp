@@ -367,7 +367,7 @@
             <div class="noticia">
                 <span class="badge badge-info etiqueta"><%= element.getCategoria().getCategoryName()%></span>
                 <div class="inline-flex">
-                    <a  href="UnaNoticia.jsp" target="_blank">
+                    <a  href="ShowNewsController?id=<%= element.getId()%>">
                         <img class="img" src="<%= element.getImageThumbnail()%>" alt="Assets/KineCineNaranja.png"/>
                     </a>
                     <div class="texto"><!--  Tarjeta-texto-->
@@ -377,7 +377,7 @@
                             <strong><%= element.getTitle()%>  </strong>
                         </p>
                         <p class="lead" style="font-size: 15px"><%= element.getDescripcion()%></p>
-                        <a class="linkColor"  href="Home.html" >Sigue leyendo...</a > 
+                        <a class="linkColor"  href="ShowNewsController?id=<%= element.getId()%>" >Sigue leyendo...</a > 
                     </div>
                 </div>
                 <div class="row A-left">
