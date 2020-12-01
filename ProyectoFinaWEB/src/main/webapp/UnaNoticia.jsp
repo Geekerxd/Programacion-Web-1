@@ -65,18 +65,23 @@
                 <%= element.getContenido()%>
             </p>
 
+
+
             <%
                 int i = 0;
                 for (Imagen element2 : imagenes) {
                     if (i != 0) {
             %>
-
-            <img  class="prueba300"src="<%=element2.getImagePath()%> " alt="...">
+            <div style="margin-bottom: 10px">
+                <img  class="prueba300"src="<%=element2.getImagePath()%> " alt="...">
+            </div>
             <%
                     }
                     i = i + 1;
                 }
             %>
+
+
 
             <div class="row A-left"style="margin-top: 20px; margin-left: 10px">
                 <i class="fas fa-hand-point-up" :hover><%= element.getLikes()%></i>
