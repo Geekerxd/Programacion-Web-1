@@ -5,6 +5,9 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.ComentarioDAO;
+import com.mycompany.proyectofinaweb.modelos.Comentario;
+import com.mycompany.proyectofinaweb.modelos.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -32,9 +35,18 @@ public class ComentarioController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String content = request.getParameter("fname");
-         String idNew = request.getParameter("idNew");
-         
-        request.getRequestDispatcher("/ShowNewsController?id="+idNew).forward(request, response);
+        String idNew = request.getParameter("idNew");
+        int estado = 1;
+
+        String nombreUsu = request.getParameter("NombreUsu");
+        String apellidosUsu = request.getParameter("ApellidoUsu");
+        //int idusuario = Integer.parseInt(request.getParameter("ELidusuarios"),10);
+        String idusuario = request.getParameter("IdUsuario");
+        usuario elusuario = new usuario(1,"dsad");// fotoooooooooo
+
+        ComentarioDAO.insertCommentary(new Comentario(estado, content, nombreUsu + " " + apellidosUsu, Integer.parseInt(idusuario, 10), Integer.parseInt(idNew, 10)));
+
+        request.getRequestDispatcher("/ShowNewsController?id=" + idNew).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

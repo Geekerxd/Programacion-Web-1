@@ -26,9 +26,9 @@ span.tooltiptext{
     left: 47.5%;
     margin-left: -60px;
     padding: 6px 6px;
-    /*
-      margin-top: 250px;
-    
+  
+      margin-bottom: 50px !important;
+      /*
     right: 0;
             Position the tooltip text 
     
@@ -40,7 +40,7 @@ span.tooltiptext{
 span.tooltiptext::after {
   content: " ";
   position: absolute;
-/*  bottom: 100%; */
+ bottom: 100%; 
    /* At the top of the tooltip */
   top:-25%;
   left: 50%;

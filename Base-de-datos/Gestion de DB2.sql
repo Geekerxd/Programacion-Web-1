@@ -125,12 +125,14 @@ CALL sp_obtieneImagenesDeNoticia(48);
 -- ------------------------- 
 
 INSERT INTO comentario
-(`estado`,`contenido`,`nombreUsu`,`fecha`,`likes`,`dislikes`,`idusuariofk`,`idanonimo`,`idnoticiafk`)
+(`estado`,`contenido`,`nombreUsu`,`fecha`,`likes`,`dislikes`,`idnoticiafk`)
 VALUES
-(0,"este es otro comentario","Pedro",NOW() ,20,2,7,-1,49);
+(0,"este es otro comentario","Pedro",NOW() ,20,2,49);
 
 select * from comentario
+select * from noticia
 select * from usuario
 select NOW()
 
+CALL sp_creaComentario(1,"este es el contenido de mi comentario","pepe aguilar", 7,48);
 

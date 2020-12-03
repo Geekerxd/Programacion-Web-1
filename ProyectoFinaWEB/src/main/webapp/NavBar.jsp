@@ -132,7 +132,8 @@
             <% if (session.getAttribute("Lafoto") == null) { %>
             <img class="icon-link" src="Assets/NoPhoto2.jpg" alt="..." :hover />
             <%} else { %>
-            <img class="icon-link" src="Assets/pardo.JPG" alt="..." :hover />
+            <img class="icon-link" src="<%=  session.getAttribute("Lafoto") %>" alt="..." :hover />
+           
             <% }%>
 
             <p style="color: #275D8C; margin-bottom: 0px">  <%= session.getAttribute("ELusername")%></p>

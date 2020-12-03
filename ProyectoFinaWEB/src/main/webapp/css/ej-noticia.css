@@ -255,7 +255,8 @@ p.Ntitle{
 
     border: solid 1px #275D8C;
     padding: 10px;
-    width: 75%;
+    width: 650px;
+    display: block;
 
 }
 .news-card a {
@@ -283,4 +284,9 @@ p.Ntitle{
     height: 400px;
 
 
+}
+textarea#fname{
+    
+    width: 600px;
+    margin-top: 10px;
 }

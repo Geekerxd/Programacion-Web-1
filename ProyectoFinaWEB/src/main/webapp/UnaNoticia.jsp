@@ -93,8 +93,14 @@
 
             <form method="POST" action="ComentarioController" class="Comments" style="margin-top: 20px">
                 <label for="fname">Comentar:</label>
-                <textarea type="text" id="fname" name="fname"></textarea>
+                <br>
+                <input placeholder="Escribe tu nombre anonimo" type="text" name="Anonimo" style="width: 300px">
+                <textarea type="text" id="fname" name="fname" placeholder="Escribe un comentario"></textarea>
                 <input type="hidden" name="idNew" value="<%= element.getId()%>">
+                <input type="hidden" name="NombreUsu" value="<%= session.getAttribute("ELnombre")%>">
+                <input type="hidden" name="ApellidoUsu" value="<%= session.getAttribute("LOSapellidos")%>">
+                <input type="hidden" name="IdUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
+               
                 <br><br>
 
 

@@ -40,6 +40,25 @@ public class UsuarioDAO {
         }
         return 0;
     }
+     public static int Insertafoto(usuario theUser) {
+
+        try {
+            Connection con = DbConection.getConnection();
+
+            CallableStatement callable = con.prepareCall("CALL sp_InsertaFotoUsuario(?, ?);");
+            
+            
+            callable.setInt(1, theUser.getIduser());
+            callable.setString(2, theUser.getFoto());
+           
+           
+
+            return callable.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return 0;
+    }
     
     
     public static usuario LogInUser(usuario theUser) {

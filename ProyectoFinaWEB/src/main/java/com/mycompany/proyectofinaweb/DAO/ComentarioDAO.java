@@ -18,18 +18,19 @@ import java.util.logging.Logger;
  * @author Dell 66895
  */
 public class ComentarioDAO {
-    
+
     public static int insertCommentary(Comentario element) {
         Connection con = null;
         try {
             con = DbConection.getConnection();
-            String sql = "CALL InsertCommentary(?,?,?,?);";
+            String sql = "CALL sp_creaComentario(?,?,?,?,?);";
             CallableStatement statement = con.prepareCall(sql);
-//
-//            statement.setString(1, element.getContent());
-//            statement.setInt(2, element.getUser().getId());
-//            statement.setInt(3, element.getIdNews());
-//            statement.setInt(4, element.getParent());
+
+            statement.setInt(1, element.getEstado());
+            statement.setString(2, element.getContenido());
+            statement.setString(3, element.getNombreUsuario());
+            statement.setInt(4, element.getIdusuario());
+            statement.setInt(5, element.getIdnoticia());
 
             return statement.executeUpdate();
 
@@ -46,8 +47,7 @@ public class ComentarioDAO {
         }
         return 0;
     }
-    
-    
+
     
     
     

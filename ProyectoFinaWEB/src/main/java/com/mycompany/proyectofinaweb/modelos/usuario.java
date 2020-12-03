@@ -78,6 +78,13 @@ public class usuario {
         this.email = email;
     }
 
+    public usuario(String foto,int iduser ) {
+        this.iduser = iduser;
+       
+        this.foto = foto;
+    }
+
+    
     public void setFoto(String foto) {
         this.foto = foto;
     }

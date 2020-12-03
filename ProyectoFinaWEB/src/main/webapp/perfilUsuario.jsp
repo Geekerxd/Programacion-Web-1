@@ -24,31 +24,36 @@
 
         <div class="container">
             <div class="container2" style="background-color: #ffffff">
+
+
+
                 <div class="pphoto">
+                  
                     <img
                         class="card-img-top"
                         src="https://assets.sensacine.com/skin/img/userprofile-cover-default-43b92a5c13.png"
                         alt="Card image cap"
                         />
-                    <span class="tooltiptext">Editar</span>
+
                 </div>
 
-                <div class="pphoto">
-                    <% if (session.getAttribute("Lafoto") == null) { %>
-                    <img class="avatar"
-                         src="Assets/NoPhoto2.jpg"
-                         alt="avatar"/>
-                    <%} else { %>
-                    <img class="avatar"
-                         src="Assets/pardo.JPG"
-                         alt="avatar"/>
-                    <% }%>
 
 
+             
+                    <div class="pphoto">
+                        <% if (session.getAttribute("Lafoto") == null) { %>
+                        <img class="avatar"
+                             src="Assets/NoPhoto2.jpg"
+                             alt="avatar"/>
+                        <%} else { %>
+                        <img class="avatar"
+                             src="<%=  session.getAttribute("Lafoto") %>"
+                             alt="avatar"/>
+                        <% }%>
 
-                    <span class="tooltiptext">Editar</span>
-                </div>
-
+                       
+                    </div>
+              
                 <h2 class="username">
                     <%=  session.getAttribute("ELnombre")%> <%=  session.getAttribute("LOSapellidos")%>
                     <svg
@@ -194,7 +199,22 @@
                         role="tabpanel"
                         aria-labelledby="informacion-tab"
                         >
-                        Descripción
+
+                        <form action="PerfilImagen" method="POST" enctype="multipart/form-data">
+
+                            <div class="form-group" >
+                                <label for="image">Cambiar foto de perfil:</label>
+                                <input type="file" name="image" id="image" class="form-control" required>
+                                <small id="emailHelp" class="form-text text-muted">Tamaño maximo de archivo 5 Mb.</small>
+                            </div> 
+                            <input type="hidden" name="idUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
+                            
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Actualizar imagen">
+                                <!--<input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#solicitudenviada" id="solicitar"value="Solicitar">-->
+                            </div>
+                        </form>
+
                     </div>
                     <div
                         class="tab-pane fade"
@@ -303,12 +323,12 @@
                         <form method="post" action="LogOffController">
 
                             <input  type="submit"  action="Cerrar Sesion" value="Log Out" class="btn btn-primary " style="color:  white; margin-left: 40%; margin-top: 10px; padding-left: 30px;padding-right: 30px">
-                             
+
 
                         </form>
 
 
-                        
+
 
                     </div>
                 </div>
