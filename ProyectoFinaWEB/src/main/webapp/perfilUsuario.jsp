@@ -27,7 +27,7 @@
 
 
 
-                <div class="pphoto">
+                <div >
                   
                     <img
                         class="card-img-top"
@@ -40,7 +40,7 @@
 
 
              
-                    <div class="pphoto">
+                    <div >
                         <% if (session.getAttribute("Lafoto") == null) { %>
                         <img class="avatar"
                              src="Assets/NoPhoto2.jpg"

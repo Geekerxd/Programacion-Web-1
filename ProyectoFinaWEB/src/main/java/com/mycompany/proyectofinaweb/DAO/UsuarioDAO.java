@@ -12,6 +12,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,18 +42,16 @@ public class UsuarioDAO {
         }
         return 0;
     }
-     public static int Insertafoto(usuario theUser) {
+
+    public static int Insertafoto(usuario theUser) {
 
         try {
             Connection con = DbConection.getConnection();
 
             CallableStatement callable = con.prepareCall("CALL sp_InsertaFotoUsuario(?, ?);");
-            
-            
+
             callable.setInt(1, theUser.getIduser());
             callable.setString(2, theUser.getFoto());
-           
-           
 
             return callable.executeUpdate();
         } catch (SQLException ex) {
@@ -59,8 +59,7 @@ public class UsuarioDAO {
         }
         return 0;
     }
-    
-    
+
     public static usuario LogInUser(usuario theUser) {
 
         try {
@@ -71,26 +70,27 @@ public class UsuarioDAO {
             callable.setString(1, theUser.getEmail());
             callable.setString(2, theUser.getPassword());
 
-            ResultSet result =callable.executeQuery();
-            while(result.next()){
-            int IDusu=  result.getInt("idusuario");
-            String email=  result.getString("email");
-            String name=  result.getString("nombre");
-            String apellidos=  result.getString("apellidos");
-            int IDtipo=  result.getInt("fktipousuario");
-            String nombreUsu=  result.getString("nombreUsu");
-             String foto=  result.getString("picture");
-            
-            return new usuario (IDusu,email,name,apellidos,IDtipo,nombreUsu,foto);
-            
+            ResultSet result = callable.executeQuery();
+            while (result.next()) {
+                int IDusu = result.getInt("idusuario");
+                String email = result.getString("email");
+                String name = result.getString("nombre");
+                String apellidos = result.getString("apellidos");
+                int IDtipo = result.getInt("fktipousuario");
+                String nombreUsu = result.getString("nombreUsu");
+                String foto = result.getString("picture");
+
+                return new usuario(IDusu, email, name, apellidos, IDtipo, nombreUsu, foto);
+
             }
-            
+
             return null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return null;
     }
+
     public static usuario LogInUserByUsername(usuario theUser) {
 
         try {
@@ -101,26 +101,56 @@ public class UsuarioDAO {
             callable.setString(1, theUser.getEmail());
             callable.setString(2, theUser.getPassword());
 
-            ResultSet result =callable.executeQuery();
-            while(result.next()){
-            int IDusu=  result.getInt("idusuario");
-            String email=  result.getString("email");
-            String name=  result.getString("nombre");
-            String apellidos=  result.getString("apellidos");
-           int IDtipo=  result.getInt("fktipousuario");
-            String nombreUsu=  result.getString("nombreUsu");
-            String foto=  result.getString("picture");
-            
-            return new usuario (IDusu,email,name,apellidos,IDtipo,nombreUsu,foto);
-            
+            ResultSet result = callable.executeQuery();
+            while (result.next()) {
+                int IDusu = result.getInt("idusuario");
+                String email = result.getString("email");
+                String name = result.getString("nombre");
+                String apellidos = result.getString("apellidos");
+                int IDtipo = result.getInt("fktipousuario");
+                String nombreUsu = result.getString("nombreUsu");
+                String foto = result.getString("picture");
+
+                return new usuario(IDusu, email, name, apellidos, IDtipo, nombreUsu, foto);
+
             }
-            
+
             return null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return null;
     }
-    
-    
+
+    public static usuario getUser(int idUser) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            CallableStatement callable = con.prepareCall("call sp_GetUser(?)");
+            callable.setInt(1, idUser);
+            ResultSet result = callable.executeQuery();
+            while (result.next()) {
+
+                int id = result.getInt(1);
+                String username = result.getString(2);
+                 String nombre = result.getString(3);
+                 String apellido = result.getString(4);
+                String photo= result.getString(5);
+                 int tipoUsu= result.getInt(6);
+//(int iduser, String username, int IDusutype, String foto)
+                return new usuario(id, username,nombre,apellido,tipoUsu,photo);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return null;
+    }
 }

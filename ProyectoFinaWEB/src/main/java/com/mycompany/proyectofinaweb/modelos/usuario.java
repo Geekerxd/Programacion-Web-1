@@ -36,6 +36,15 @@ public class usuario {
         this.usutype = usutype;
     }
 
+    public usuario(int iduser, String username,String nombre, String apellidos, int IDusutype, String foto) {
+        this.iduser = iduser;
+        this.username = username;
+        this.IDusutype = IDusutype;
+        this.foto = foto;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+    }
+
     public usuario(String nombre, String apellidos, String email, String password, String username, int phoneNumb) {
 
         this.nombre = nombre;

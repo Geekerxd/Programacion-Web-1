@@ -5,10 +5,12 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.ComentarioDAO;
 import com.mycompany.proyectofinaweb.DAO.ImageDAO;
 import com.mycompany.proyectofinaweb.DAO.NoticiaDAO;
 import com.mycompany.proyectofinaweb.DAO.categoryDAO;
 import com.mycompany.proyectofinaweb.modelos.Categoria;
+import com.mycompany.proyectofinaweb.modelos.Comentario;
 import com.mycompany.proyectofinaweb.modelos.Imagen;
 import com.mycompany.proyectofinaweb.modelos.Noticia;
 import java.io.IOException;
@@ -38,19 +40,20 @@ public class ShowNewsController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String idNews = request.getParameter("id");
-         List<Categoria> categories = categoryDAO.getCategories();
-         Noticia element = NoticiaDAO.getNew(Integer.parseInt(idNews, 10));
-         
-         List<Imagen> images = ImageDAO.getImagesByNoti(Integer.parseInt(idNews, 10));
-         
-         
-         
+        List<Categoria> categories = categoryDAO.getCategories();
+        Noticia element = NoticiaDAO.getNew(Integer.parseInt(idNews, 10));
+
+        List<Imagen> images = ImageDAO.getImagesByNoti(Integer.parseInt(idNews, 10));
+        
+        List<Comentario> commentaries = ComentarioDAO.getCommentariesByNew(Integer.parseInt(idNews, 10));
+
         request.setAttribute("Categories", categories);
         request.setAttribute("New", element);
-         request.setAttribute("Images", images);
-         request.getRequestDispatcher("UnaNoticia.jsp").forward(request, response);
+        request.setAttribute("Images", images);
+         request.setAttribute("Comentarios", commentaries);
+        request.getRequestDispatcher("UnaNoticia.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

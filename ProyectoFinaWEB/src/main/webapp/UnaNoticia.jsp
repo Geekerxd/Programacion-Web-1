@@ -3,6 +3,7 @@
     Created on : 21/11/2020, 09:40:44 AM
     Author     : Dell 66895
 --%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Comentario"%>
 <%@page import="com.mycompany.proyectofinaweb.modelos.Imagen"%>
 <%@page import="com.mycompany.proyectofinaweb.DAO.NoticiaDAO"%>
 <%@page import="com.mycompany.proyectofinaweb.modelos.Noticia"%>
@@ -14,6 +15,7 @@
 
     String NombreCompl = NoticiaDAO.GetNameAutor(element.getIdUsuario());
     List<Imagen> imagenes = (List<Imagen>) request.getAttribute("Images");
+ List<Comentario> coentarios = (List<Comentario>) request.getAttribute("Comentarios");
 
 %>
 
@@ -32,18 +34,10 @@
 
 
     </head>
-    <body>
-
-
-
-
-        <!-- esto es la barra de navegacion -->
-
-        <jsp:include page="NavBar.jsp"/>
-
-
-        <!--                                        -->
-
+    <body> 
+        <!-- esto es la barra de navegacion --> 
+        <jsp:include page="NavBar.jsp"/> 
+        <!--                                        --> 
         <div class="container">
             <p class="Ntitle"> <%=element.getTitle()%> </p>
             <div class="row">
@@ -100,7 +94,7 @@
                 <input type="hidden" name="NombreUsu" value="<%= session.getAttribute("ELnombre")%>">
                 <input type="hidden" name="ApellidoUsu" value="<%= session.getAttribute("LOSapellidos")%>">
                 <input type="hidden" name="IdUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
-               
+
                 <br><br>
 
 
@@ -113,6 +107,25 @@
 
             </div>
 
+
+            <%for (Comentario comment : coentarios ) {%>
+            <div style="display:block;  margin-bottom: 30px"> <!--  un comentario -->
+                <div class="media"> 
+                    <img class="icon-link align-self-start mr-3" src="<%=comment.getElUsuario().getFoto()  %>" alt="..." >
+                    <div class="media-body">
+                        <h5 class="mt-0"><%=comment.getElUsuario().getNombre()  %> <%=comment.getElUsuario().getApellidos() %> </h5>
+                        <p><%=comment.getContenido() %></p>
+
+                    </div> 
+                </div>
+                <div class="media" style="margin-left: 85px;">
+                    <i class="fas fa-hand-point-up" :hover><%= comment.getLikes() %></i>
+                    <i class="fas fa-hand-point-down" :hover><%= comment.getDislikes() %></i> 
+                    <i class="fas fa-ellipsis-h" :hover></i> 
+                </div>
+            </div>
+
+            <% }%>
 
 
 

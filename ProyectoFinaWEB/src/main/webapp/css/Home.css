@@ -33,16 +33,32 @@ body {
 }
 
 .icon-link {
-  margin-left: 10px;
-  max-height: 60px;
-  border-radius: 100px;
+     object-fit: cover;
+    object-position: 50% 0;
+    margin-left: 10px;
+    max-height: 60px;
+    border-radius: 100px;
+    
+    width: 60px;
+    height: 60px;
+    
+    
+    /*
+    object-fit: cover;
+    object-position: 50% 0;
+    border-radius: 2px;
+
+    width: 600px;
+    height: 400px;
+    
+    */
 }
 
 .icon-link:hover {
-  margin-left: 10px;
-  max-height: 70px;
-  border-radius: 100px;
-}
+     width: 70px;
+    height: 70px;
+}  
+
 
 .Subtitles {
   font-family: "Roboto", sans-serif;

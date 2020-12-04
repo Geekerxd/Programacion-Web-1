@@ -121,7 +121,7 @@ where idnoticiafk=48
 
 CALL sp_obtieneImagenesDeNoticia(48);
 
-
+use `db_proyect_pw1_02`
 -- ------------------------- 
 
 INSERT INTO comentario
@@ -129,10 +129,19 @@ INSERT INTO comentario
 VALUES
 (0,"este es otro comentario","Pedro",NOW() ,20,2,49);
 
-select * from comentario
+select * from comentario order by fecha desc;
 select * from noticia
 select * from usuario
 select NOW()
 
-CALL sp_creaComentario(1,"este es el contenido de mi comentario","pepe aguilar", 7,48);
+CALL sp_creaComentario(1,"GOT", 7,48);
+
+
+
+CALL `db_proyect_pw1_02`.`sp_InsertaFotoUsuario`(1, "una imagen...");
+
+CALL sp_getCommentariesByID(48);
+
+CALL sp_GetUser(7);
+
 

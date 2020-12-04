@@ -38,13 +38,9 @@ public class ComentarioController extends HttpServlet {
         String idNew = request.getParameter("idNew");
         int estado = 1;
 
-        String nombreUsu = request.getParameter("NombreUsu");
-        String apellidosUsu = request.getParameter("ApellidoUsu");
-        //int idusuario = Integer.parseInt(request.getParameter("ELidusuarios"),10);
         String idusuario = request.getParameter("IdUsuario");
-        usuario elusuario = new usuario(1,"dsad");// fotoooooooooo
-
-        ComentarioDAO.insertCommentary(new Comentario(estado, content, nombreUsu + " " + apellidosUsu, Integer.parseInt(idusuario, 10), Integer.parseInt(idNew, 10)));
+       
+        ComentarioDAO.insertCommentary(new Comentario(estado, content, Integer.parseInt(idusuario, 10), Integer.parseInt(idNew, 10)));
 
         request.getRequestDispatcher("/ShowNewsController?id=" + idNew).forward(request, response);
     }

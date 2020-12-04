@@ -32,17 +32,6 @@ body {
     border: solid 2px red;
 }
 
-.icon-link {
-    margin-left: 10px;
-    max-height: 60px;
-    border-radius: 100px;
-}
-
-.icon-link:hover {
-    margin-left: 10px;
-    max-height: 70px;
-    border-radius: 100px;
-}
 
 .Subtitles {
     font-family: "Roboto", sans-serif;

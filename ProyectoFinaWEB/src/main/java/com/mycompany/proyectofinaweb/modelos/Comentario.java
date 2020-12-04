@@ -35,6 +35,19 @@ public class Comentario {
         this.idnoticia = idnoticia;
     }
 
+    public Comentario(int estado, String contenido,  int idusuario, int idnoticia) {
+        this.estado = estado;
+        this.contenido = contenido;
+        this.idusuario = idusuario;
+        this.idnoticia = idnoticia;
+    }
+      public Comentario(int estado, String contenido,usuario ElUsuario, int idnoticia) {
+        this.estado = estado;
+        this.contenido = contenido;
+        this.ElUsuario=ElUsuario;
+        this.idnoticia = idnoticia;
+    }
+    
     public Comentario(int id, int estado, String contenido, String NombreUsuario, String fecha, int likes, int dislikes, int idusuario, int idanonimo, int idnoticia) {
         this.id = id;
         this.estado = estado;
@@ -47,7 +60,17 @@ public class Comentario {
         this.idanonimo = idanonimo;
         this.idnoticia = idnoticia;
     }
-
+  public Comentario(int id, int estado, String contenido,   String fecha, int likes, int dislikes,usuario ElUsuario, int idanonimo, int idnoticia) {
+        this.id = id;
+        this.estado = estado;
+        this.contenido = contenido; 
+        this.fecha = fecha;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.ElUsuario = ElUsuario;
+        this.idanonimo = idanonimo;
+        this.idnoticia = idnoticia;
+    }
     public usuario getElUsuario() {
         return ElUsuario;
     }
