@@ -5,13 +5,9 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
-import com.mycompany.proyectofinaweb.DAO.NoticiaDAO;
-import com.mycompany.proyectofinaweb.DAO.categoryDAO;
-import com.mycompany.proyectofinaweb.modelos.Categoria;
-import com.mycompany.proyectofinaweb.modelos.Noticia;
+import com.mycompany.proyectofinaweb.DAO.ComentarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,9 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dell 66895
  */
-@WebServlet(name = "perfilUsuarioController", urlPatterns = {"/perfilUsuarioController"})
-public class perfilUsuarioController extends HttpServlet {
+@WebServlet(name = "DeleteCommentaryController", urlPatterns = {"/DeleteCommentaryController"})
+public class DeleteCommentaryController extends HttpServlet {
 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+       String id = request.getParameter("id");
+       String idNew = request.getParameter("idNew");
+       ComentarioDAO.deleteCommentary(Integer.parseInt(id,10));
+       
+       request.getRequestDispatcher("/ShowNewsController?id=" + idNew).forward(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -38,15 +42,21 @@ public class perfilUsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       List<Categoria> categories = categoryDAO.getCategories();
-        request.setAttribute("Categories", categories);
-        String id = request.getParameter("id");
-        
-        
-         List<Noticia> news = NoticiaDAO.getNewsByUserId(Integer.parseInt(id)); 
-         
-        request.setAttribute("News", news);
-        request.getRequestDispatcher("perfilUsuario.jsp").forward(request, response);
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -57,6 +67,6 @@ public class perfilUsuarioController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }
+    }// </editor-fold>
 
 }

@@ -39,8 +39,16 @@
                                role="tab" aria-controls="v-pills-Edición" aria-selected="false">Edición</a>
                             <a class="nav-link" id="v-pills-Solicitudes-tab" data-toggle="pill" href="#v-pills-Solicitudes"
                                role="tab" aria-controls="v-pills-Solicitudes" aria-selected="false">Solicitudes</a>
+
+                            <%
+                                if ((int) session.getAttribute("ELtipousu") == 1 || (int) session.getAttribute("ELtipousu") == 4) {
+                            %>
                             <a class="nav-link" id="v-pills-Gestor-tab" data-toggle="pill" href="#v-pills-Gestor" role="tab"
                                aria-controls="v-pills-Gestor" aria-selected="false">Gestor de solicitudes</a>
+                            <%
+                                }
+                            %>
+
                         </div>
                     </div>
                 </div>
@@ -92,8 +100,7 @@
                                 <div class="col-sm-10">
                                     <select id="inputCategoria" name="category"  class="form-control" >
                                         <option value="-1">Escoge una categoría</option>
-                                        <%
-                                            for (Categoria category : categories) {
+                                        <%                                            for (Categoria category : categories) {
                                         %>
                                         <option value="<%= category.getID()%>"><%= category.getCategoryName()%></option>
                                         <%

@@ -22,9 +22,9 @@ import java.util.logging.Logger;
 public class UsuarioDAO {
 
     public static int signInUser(usuario theUser) {
-
+ Connection con =null;
         try {
-            Connection con = DbConection.getConnection();
+            con = DbConection.getConnection();
 
             CallableStatement callable = con.prepareCall("CALL sp_insertausuarios(?, ?, ?, ?,?,?,?);");
 
@@ -40,13 +40,22 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         return 0;
     }
 
     public static int Insertafoto(usuario theUser) {
-
+ Connection con = null;
         try {
-            Connection con = DbConection.getConnection();
+             con = DbConection.getConnection();
 
             CallableStatement callable = con.prepareCall("CALL sp_InsertaFotoUsuario(?, ?);");
 
@@ -57,13 +66,22 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         return 0;
     }
 
     public static usuario LogInUser(usuario theUser) {
-
+        Connection con = null;
         try {
-            Connection con = DbConection.getConnection();
+            con = DbConection.getConnection();
 
             CallableStatement callable = con.prepareCall("CALL sp_LogInUser (?,?);");
 
@@ -87,14 +105,22 @@ public class UsuarioDAO {
             return null;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        }finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
         return null;
     }
 
     public static usuario LogInUserByUsername(usuario theUser) {
-
+ Connection con = null;
         try {
-            Connection con = DbConection.getConnection();
+            con = DbConection.getConnection();
 
             CallableStatement callable = con.prepareCall("CALL sp_LogInUserByUsername (?,?);");
 
@@ -119,6 +145,16 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
         return null;
     }
 
@@ -133,12 +169,12 @@ public class UsuarioDAO {
 
                 int id = result.getInt(1);
                 String username = result.getString(2);
-                 String nombre = result.getString(3);
-                 String apellido = result.getString(4);
-                String photo= result.getString(5);
-                 int tipoUsu= result.getInt(6);
+                String nombre = result.getString(3);
+                String apellido = result.getString(4);
+                String photo = result.getString(5);
+                int tipoUsu = result.getInt(6);
 //(int iduser, String username, int IDusutype, String foto)
-                return new usuario(id, username,nombre,apellido,tipoUsu,photo);
+                return new usuario(id, username, nombre, apellido, tipoUsu, photo);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

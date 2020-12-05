@@ -143,5 +143,57 @@ CALL `db_proyect_pw1_02`.`sp_InsertaFotoUsuario`(1, "una imagen...");
 CALL sp_getCommentariesByID(48);
 
 CALL sp_GetUser(7);
+select * from comentario order by fecha desc;
+CALL  sp_DeleteCommentary(1);
 
 
+
+SELECT `tipousuario`.`idtipousuario`,
+    `tipousuario`.`tipo`
+FROM `db_proyect_pw1_02`.`tipousuario`;
+
+
+
+
+UPDATE usuario SET
+`fktipousuario` = 1 WHERE idusuario=1;
+
+UPDATE usuario SET
+`fktipousuario` = 3 WHERE idusuario=6;
+
+UPDATE usuario SET
+`fktipousuario` = 4 WHERE idusuario=7;
+
+SELECT * 
+FROM `db_proyect_pw1_02`.`usuario`;
+
+
+SELECT `tipousuario`.`idtipousuario`,
+    `tipousuario`.`tipo`
+FROM `db_proyect_pw1_02`.`tipousuario`;
+
+
+
+
+SELECT `noticia`.`idnoticia`,
+    `noticia`.`titulo`,
+    `noticia`.`visitas`,
+    `noticia`.`fecha`,
+    `noticia`.`contenido`,
+    `noticia`.`estado`,
+    `noticia`.`likes`,
+    `noticia`.`dislikes`,
+    `noticia`.`idUsuarioFk`,
+    `noticia`.`idCategoriaFk`,
+    `noticia`.`descripcion`,
+    `noticia`.`Thumbnail`
+FROM `db_proyect_pw1_02`.`noticia`
+where idUsuarioFk=7
+order by fecha desc
+;
+
+CALL `db_proyect_pw1_02`.`sp_getNewsByUserId`(7);
+
+
+
+"% Palabra %"

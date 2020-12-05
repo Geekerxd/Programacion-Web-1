@@ -92,4 +92,28 @@ public class ComentarioDAO {
         return commentaries;
     }
 
+    
+    public static int deleteCommentary(int id) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_DeleteCommentary(?)";
+            CallableStatement statement = con.prepareCall(sql);
+            statement.setInt(1, id);
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if(con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ComentarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        
+        return 0;
+    }
+    
 }

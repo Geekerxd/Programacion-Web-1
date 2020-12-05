@@ -128,7 +128,7 @@
 
         <% } else {  %>
 
-        <a href="perfilUsuarioController" style=" margin-left: 20px;" >
+        <a href="perfilUsuarioController?id=<%= session.getAttribute("ELidusuarios")%>" style=" margin-left: 20px;" >
             <% if (session.getAttribute("Lafoto") == null) { %>
             <img class="icon-link" src="Assets/NoPhoto2.jpg" alt="..." :hover />
             <%} else { %>
