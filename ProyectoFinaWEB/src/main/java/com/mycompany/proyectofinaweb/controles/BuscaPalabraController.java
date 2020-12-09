@@ -22,11 +22,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dell 66895
  */
-@WebServlet(name = "todasNewsController", urlPatterns = {"/todasNewsController"})
-public class todasNewsController extends HttpServlet {
+@WebServlet(name = "BuscaPalabraController", urlPatterns = {"/BuscaPalabraController"})
+public class BuscaPalabraController extends HttpServlet {
 
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -34,13 +34,17 @@ public class todasNewsController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String palabra = request.getParameter("buscador");
+
         List<Categoria> categories = categoryDAO.getCategories();
-        List<Noticia> news = NoticiaDAO.getNews();
+        List<Noticia> news = NoticiaDAO.getNewsByWord(palabra);
         request.setAttribute("Categories", categories);
         request.setAttribute("News", news);
         request.getRequestDispatcher("AllNoticias.jsp").forward(request, response);
+
     }
 
     /**

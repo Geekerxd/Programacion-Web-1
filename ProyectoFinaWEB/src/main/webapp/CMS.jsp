@@ -3,11 +3,16 @@
     Created on : 22/11/2020, 09:23:19 PM
     Author     : Dell 66895
 --%>
+<%@page import="com.mycompany.proyectofinaweb.DAO.NoticiaDAO"%>
+<%@page import="com.mycompany.proyectofinaweb.modelos.Noticia"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
 
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
+    List<Noticia> lasNews = (List<Noticia>) request.getAttribute("News"); // noticias con estado = 0
+    List<Noticia> newsR = (List<Noticia>) request.getAttribute("NewsR"); // noticias con estado = 0-1
+
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,8 +23,41 @@
 
         <jsp:include page="header.jsp"/>
 
+        <script src="js/cms.js" type="text/javascript"></script> 
+
+        <!-- Remember to include jQuery :) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+        <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
+
+
+
         <link rel="stylesheet" href="css/cms.css" />
-        <script src="js/cms.js" type="text/javascript"></script>
+
+        <script src="js/cometarioEditor.js" type="text/javascript"></script>
+
+
+
+        <script>
+
+            function myFunction() {
+                var comentario = prompt("Escribe porqué razón se rechazó esta noticia:", "");
+                if (comentario != null) {
+                    document.getElementById("elComment").setAttribute("value", comentario);
+
+                }
+
+
+            }
+        </script>
+
+
+
+
         <title>CMS Page</title>
 
     </head>
@@ -38,17 +76,17 @@
                             <a class="nav-link" id="v-pills-Edición-tab" data-toggle="pill" href="#v-pills-Edición"
                                role="tab" aria-controls="v-pills-Edición" aria-selected="false">Edición</a>
                             <a class="nav-link" id="v-pills-Solicitudes-tab" data-toggle="pill" href="#v-pills-Solicitudes"
-                               role="tab" aria-controls="v-pills-Solicitudes" aria-selected="false">Solicitudes</a>
+                               role="tab" aria-controls="v-pills-Solicitudes" aria-selected="false">Estado de Solicitudes</a>
 
-                            <%
-                                if ((int) session.getAttribute("ELtipousu") == 1 || (int) session.getAttribute("ELtipousu") == 4) {
+                            <%                                if ((int) session.getAttribute("ELtipousu") == 1 || (int) session.getAttribute("ELtipousu") == 4) {
                             %>
                             <a class="nav-link" id="v-pills-Gestor-tab" data-toggle="pill" href="#v-pills-Gestor" role="tab"
                                aria-controls="v-pills-Gestor" aria-selected="false">Gestor de solicitudes</a>
                             <%
                                 }
                             %>
-
+                            <a class="nav-link" id="v-pills-rechazadas-tab" data-toggle="pill" href="#v-pills-rechazadas" role="tab"
+                               aria-controls="v-pills-rechazadas" aria-selected="false">Noticias rechazadas</a>
                         </div>
                     </div>
                 </div>
@@ -314,6 +352,7 @@
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </nav>
+                        <h3 style="margin-top: 20px">Solicitudes</h3>
                         <div class="solicitudes">
                             <div class="card">
                                 <div class="card-header">
@@ -360,34 +399,92 @@
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </nav>
-                        <div class="card">
-                            <div class="card-header">
-                                Solicitante <button type="button" class="btn btn-success">Aceptar</button> <button type="button" class="btn btn-danger">Rechazar</button>
+                        <h3 style="margin-top: 20px">Gestor de noticias</h3>
+
+                        <%
+                            for (Noticia element : lasNews) {
+                        %>
+                        <%   String NombreCompl = NoticiaDAO.GetNameAutor(element.getIdUsuario());%>
+                        <div class="card" style="margin-bottom: 20px">
+                            <div class="card-header"> Solicitante:  <%=  NombreCompl%>
+                                <a href="AceptarNoticiaController?id=<%= element.getId()%>">
+
+                                    <button  
+                                        type="button"  class="btn btn-success"   >Aceptar
+                                    </button> 
+
+                                </a>
+
+
+                                <form method="POST" action="RechazaController?id=<%= element.getId()%>"   style="margin-left: 93%; margin-top: -27px">
+
+                                    <input type="hidden" name="idNew" value="<%= element.getId()%>">
+                                    <input type="hidden" name="comentario" id="elComment" value="">
+                                    <input type="hidden" name="IdUsuario" value="<%= session.getAttribute("ELidusuarios")%>">
+
+                                    <input onclick=" return myFunction()" type="submit" class="btn btn-danger" value="Rechazar" >
+
+
+                                </form>
+
+
+
+
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Ver</a>
+                                <h5 class="card-title"><%= element.getTitle()%></h5>
+                                <p class="card-text"><%= element.getDescripcion()%></p>
+                                <a href="ShowNewsController?id=<%= element.getId()%>"   class="btn btn-primary">Ver</a>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                Solicitante <button type="button" class="btn btn-success">Aceptar</button> <button type="button" class="btn btn-danger">Rechazar</button>
+                        <%
+                            }
+                        %>
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-rechazadas" role="tabpanel"
+                         aria-labelledby="v-pills-rechazadas-tab">
+                        <h3 style="margin-top: 20px"> Mis Noticias rechazadas</h3>
+
+                        <%
+                            if (newsR != null) {
+                                for (Noticia element : newsR) {
+                        %>
+                        <%   String NombreCompl = NoticiaDAO.GetNameAutor(element.getIdUsuario());%>
+                        <div class="card" style="margin-bottom: 20px">
+                            <div class="card-header"> Solicitante:  <%=  NombreCompl%>
+
+
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional
-                                    content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Ver</a>
+                                <h5 class="card-title"><%= element.getTitle()%></h5>
+                                <p class="card-text"><%= element.getDescripcion()%></p>
+                                <a href="RechazaController?id=<%= element.getId()%>and?idusu=<%= session.getAttribute("ELidusuarios")%>"  
+                                   class="btn btn-primary">Ver comentarios</a>
                             </div>
                         </div>
+                        <%
+                            }
+                        } else {
+                        %>
+
+                        <h4 style="margin-top: 20px; color: red; ">No tiene ninguna noticia rechazada.</h4>
+
+                        <%
+                            }
+                        %>                  
+
+
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
 
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.min.js"></script>

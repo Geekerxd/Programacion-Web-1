@@ -8,7 +8,7 @@
 <%@page import="com.mycompany.proyectofinaweb.modelos.Categoria"%>
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
-     List<Noticia> susNews = (List<Noticia>) request.getAttribute("News");
+    List<Noticia> susNews = (List<Noticia>) request.getAttribute("News");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -204,24 +204,32 @@
                         role="tabpanel"
                         aria-labelledby="noticias-tab"
                         >
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            id="gotogestor"
-                            style="margin-right: auto; margin-left: auto"
-                            onclick="location.href = 'AddNewsController'"
-                            >
-                            Gestor de noticias
-                        </button>
+
+
+
+                        <a href="AddNewsController?id=<%= session.getAttribute("ELidusuarios")%>">
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                id="gotogestor"
+                                style="margin-right: auto; margin-left: auto" 
+                                >
+                                Gestor de noticias
+                            </button>
+
+
+                        </a>
+
+
                         <h3> Mis noticias:</h3>
                         <%
                             for (Noticia element : susNews) {
                         %>
 
                         <div class="card">
-                            
+
                             <div class="card-body">
-                                <h5 class="card-title"><%= element.getTitle() %></h5>
+                                <h5 class="card-title"><%= element.getTitle()%></h5>
                                 <p class="card-text"><%= element.getDescripcion()%>
                                 </p>
                                 <a  href="ShowNewsController?id=<%= element.getId()%>" class="btn btn-primary">Ver</a>

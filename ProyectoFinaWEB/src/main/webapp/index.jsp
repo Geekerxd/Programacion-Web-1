@@ -403,6 +403,7 @@
                 Ver más
             </button>
         </div>
+            
         <!-- Button trigger modal -->
         <button
             type="button"

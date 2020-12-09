@@ -44,7 +44,13 @@ public class AddNewsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+         String idUsu = request.getParameter("id");
         List<Categoria> categories = categoryDAO.getCategories();
+        List<Noticia> news = NoticiaDAO.getNewsByUserIdEDITOR();
+        List<Noticia> newsMenosuno = NoticiaDAO.getNewsByUserIdEDITOR_rechazadas(Integer.parseInt(idUsu, 10));
+        request.setAttribute("News", news);
+        request.setAttribute("NewsR", newsMenosuno);
         request.setAttribute("Categories", categories);
         request.getRequestDispatcher("CMS.jsp").forward(request, response);
     }
@@ -89,11 +95,11 @@ public class AddNewsController extends HttpServlet {
         int idNoticia = NoticiaDAO.getIDNotiBythings(newNews);
         if (idNoticia != 0) {
 
-            Imagen Laimagen = new Imagen(FileUtils.RUTE_USER_IMAGE + "/" + NameImage, idNoticia); 
+            Imagen Laimagen = new Imagen(FileUtils.RUTE_USER_IMAGE + "/" + NameImage, idNoticia);
             ImageDAO.insertaImagen(Laimagen);
 
             for (int i = 0; i < contador - 1; i++) {// se insertan las demás que no es la primera
-                int numero = i+2;
+                int numero = i + 2;
                 String nuevo = "Imagen" + numero;
                 Part file2 = request.getPart(nuevo);
 

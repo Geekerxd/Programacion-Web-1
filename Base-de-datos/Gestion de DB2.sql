@@ -147,7 +147,7 @@ select * from comentario order by fecha desc;
 CALL  sp_DeleteCommentary(1);
 
 
-
+select * from usuario;
 SELECT `tipousuario`.`idtipousuario`,
     `tipousuario`.`tipo`
 FROM `db_proyect_pw1_02`.`tipousuario`;
@@ -197,3 +197,94 @@ CALL `db_proyect_pw1_02`.`sp_getNewsByUserId`(7);
 
 
 "% Palabra %"
+--   ------------------------------estado:
+select * from noticia
+
+UPDATE `db_proyect_pw1_02`.`noticia`
+SET
+ 
+`estado` = 1 ,fecha= NOW()
+WHERE `idnoticia` = 53;
+
+CALL `db_proyect_pw1_02`.`sp_AceptaNoticia`(54);
+d
+
+CALL `db_proyect_pw1_02`.`sp_getNewsByUserIdEditor`();
+
+-- --------------------rechaza
+
+select * from noticia
+UPDATE `db_proyect_pw1_02`.`noticia`
+SET
+ 
+`estado` = -1 
+WHERE `idnoticia` = 50;
+
+
+CALL `db_proyect_pw1_02`.`sp_rechazaNoticia`(49);
+
+-- ------------------ fecha pulicacion
+UPDATE `db_proyect_pw1_02`.`noticia`
+SET
+ 
+`estado` = 1 
+WHERE `idnoticia` = 53;
+
+
+-- ----------------------------------likes:
+
+
+
+INSERT INTO `db_proyect_pw1_02`.`noticia`
+(`likes`)
+VALUES
+( 1)
+where idnoticia= ;
+
+
+
+
+-- -------------------------------------------------- buscador:
+
+CREATE DEFINER=root@localhost PROCEDURE sp_busqueda(
+IN Pdata varchar(200)
+)
+BEGIN
+SELECT * FROM noticia WHERE titulo LIKE(concat('%',Pdata,'%'));
+END
+
+
+
+
+CALL db_proyect_pw1_02.sp_busqueda('the');
+
+
+CALL `db_proyect_pw1_02`.`sp_getNewsByUserIdEditor_Rechazadas`(1);
+
+
+select * from usuario; select * from tipousuario
+
+
+
+
+
+UPDATE `db_proyect_pw1_02`.`usuario`
+SET 
+`fktipousuario` = 5
+WHERE `idusuario` = 15;
+
+
+-- ----------------------------------- comentarios editor
+
+select * from usuario; 
+SELECT * FROM noticia
+CALL  sp_creaComentarioEditor("Este es el contenido",1,43);
+
+SELECT `comentarioeditor`.`idcomentarioeditor`,
+    `comentarioeditor`.`asunto`,
+    `comentarioeditor`.`contenido`,
+    `comentarioeditor`.`fecha`,
+    `comentarioeditor`.`idnoticiafk`,
+    `comentarioeditor`.`idusuariofk`
+FROM `db_proyect_pw1_02`.`comentarioeditor`;
+

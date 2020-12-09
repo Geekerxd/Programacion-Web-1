@@ -99,9 +99,10 @@
             </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input
+        <form action="BuscaPalabraController" method="POST"  class="form-inline my-2 my-lg-0">
+            <input 
                 class="form-control mr-sm-2"
+                name="buscador"
                 type="search"
                 placeholder="Buscar cosas..."
                 aria-label="search"
