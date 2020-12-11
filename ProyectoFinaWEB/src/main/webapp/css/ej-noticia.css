@@ -265,10 +265,10 @@ p.Ntitle{
 
 }
 .prueba300{
-    object-fit: cover;
-    object-position: 50% 0;
+   
     border-radius: 2px;
-
+ object-fit: cover;
+    object-position: 50% 0;
     width: 600px;
     height: 400px;
 

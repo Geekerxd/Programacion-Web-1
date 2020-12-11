@@ -25,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "perfilUsuarioController", urlPatterns = {"/perfilUsuarioController"})
 public class perfilUsuarioController extends HttpServlet {
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,14 +37,16 @@ public class perfilUsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       List<Categoria> categories = categoryDAO.getCategories();
+        List<Categoria> categories = categoryDAO.getCategories();
         request.setAttribute("Categories", categories);
         String id = request.getParameter("id");
-        
-        
-         List<Noticia> news = NoticiaDAO.getNewsByUserId(Integer.parseInt(id)); 
-         
+
+        List<Noticia> news = NoticiaDAO.getNewsByUserId(Integer.parseInt(id));
+        List<Noticia> NoticiasMArcadas = NoticiaDAO.getNewsFav(Integer.parseInt(id));
+
         request.setAttribute("News", news);
+
+        request.setAttribute("NotiFav", NoticiasMArcadas);
         request.getRequestDispatcher("perfilUsuario.jsp").forward(request, response);
     }
 

@@ -9,6 +9,8 @@
 <%
     List<Categoria> categories = (List<Categoria>) request.getAttribute("Categories");
     List<Noticia> susNews = (List<Noticia>) request.getAttribute("News");
+
+    List<Noticia> FavNews = (List<Noticia>) request.getAttribute("NotiFav");
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -182,20 +184,39 @@
                         >
 
                         <h3> Noticias marcadas:</h3>
-                        <div class="card" style="width: 18rem">
-                            <img
-                                class="card-img-top"
-                                src="https://cnet1.cbsistatic.com/img/IIrUqG6HhZogVkw5G6Z2Lpx30e8=/940x0/2020/06/20/ed17b381-622d-4ec4-98a9-393017a23381/dune-2020-remake-4.jpg"
-                                alt="Card image cap"
-                                />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">
-                                    Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.
-                                </p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+
+                        <div class="row" >
+
+                            <%
+                                for (Noticia element2 : FavNews) {
+                            %>
+                            <div class="card" style="width: 18rem">
+                                <img style=" object-fit: cover;    object-position: 50% 0;    height: 200px;"
+                                    class="card-img-top"
+                                    src="<%=element2.getImageThumbnail()%>"
+                                    alt="Card image cap"
+                                    />
+                                <div class="card-body">
+                                    <details>
+                                        <summary class="card-title">Ver titulo</summary>
+                                        <p><%=element2.getTitle()%></p>
+                                    </details>
+
+                                    <details>
+                                        <summary class="card-title">Ver Descripción</summary>
+                                        <p class="card-text">
+                                            <%=element2.getDescripcion()%>
+                                        </p>
+                                    </details>
+
+                                    <a href="ShowNewsController?id=<%= element2.getId()%>"  class="btn btn-primary">Ver</a>
+                                </div>
                             </div>
+
+                            <%
+                                }
+                            %>
+
                         </div>
                     </div>
                     <div

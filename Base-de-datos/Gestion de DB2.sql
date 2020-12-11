@@ -198,7 +198,6 @@ CALL `db_proyect_pw1_02`.`sp_getNewsByUserId`(7);
 
 "% Palabra %"
 --   ------------------------------estado:
-select * from noticia
 
 UPDATE `db_proyect_pw1_02`.`noticia`
 SET
@@ -287,4 +286,82 @@ SELECT `comentarioeditor`.`idcomentarioeditor`,
     `comentarioeditor`.`idnoticiafk`,
     `comentarioeditor`.`idusuariofk`
 FROM `db_proyect_pw1_02`.`comentarioeditor`;
+
+select * from comentario
+select * from anonimo
+
+
+CALL sp_creaAnonimo("josé luis");
+
+
+
+
+
+
+
+CALL sp_creaComentarioAnonimo(1,"este es contenido anonimo",1 , 57);
+
+CALL sp_traeIdAnonim("batman");
+
+
+DELETE FROM `db_proyect_pw1_02`.`comentario`
+WHERE idanonimofk=12;
+
+-- ----------------------------------- Noticias Marcadas:
+
+
+select * from noticia;
+select * from usuario;
+select * from noticiamarcada;
+
+
+-- le da marcar noticia
+INSERT INTO `db_proyect_pw1_02`.`noticiamarcada`
+(`idusuariofk`,
+`idnoticiafk`)
+VALUES(7,53);
+
+CALL sp_FavUnaNoticia(7,57);
+
+-- get noticias by
+
+
+SELECT A.idnoticia,
+    A.titulo,
+    A.visitas,
+    A.fecha,
+    A.contenido,
+    A.estado,
+    A.likes,
+    A.dislikes,
+    A.idUsuarioFk,
+    A.idCategoriaFk,
+    A.descripcion,
+    A.Thumbnail
+FROM noticia as A
+join noticiamarcada as B
+on A.idnoticia= B.idnoticiafk
+where B.idusuariofk=7;
+
+CALL sp_FavObtieneSusNoti(7);
+
+
+select *
+from noticiamarcada  
+where idusuariofk=7;
+
+
+select *  from usuario;
+select *  from noticia;
+select * from noticiamarcada;
+
+
+
+CALL `db_proyect_pw1_02`.`sp_getNoticia`();
+
+UPDATE `db_proyect_pw1_02`.`noticia`
+SET 
+`estado` =0
+WHERE `idnoticia` = 53;
+
 

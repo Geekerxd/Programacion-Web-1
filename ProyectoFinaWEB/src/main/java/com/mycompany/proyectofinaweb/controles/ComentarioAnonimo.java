@@ -5,14 +5,12 @@
  */
 package com.mycompany.proyectofinaweb.controles;
 
+import com.mycompany.proyectofinaweb.DAO.AnonimoDAO;
 import com.mycompany.proyectofinaweb.DAO.ComentarioDAO;
-import com.mycompany.proyectofinaweb.DAO.categoryDAO;
-import com.mycompany.proyectofinaweb.modelos.Categoria;
+import com.mycompany.proyectofinaweb.modelos.AnonimoClass;
 import com.mycompany.proyectofinaweb.modelos.Comentario;
-import com.mycompany.proyectofinaweb.modelos.usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dell 66895
  */
-@WebServlet(name = "ComentarioController", urlPatterns = {"/ComentarioController"})
-public class ComentarioController extends HttpServlet {
+@WebServlet(name = "ComentarioAnonimo", urlPatterns = {"/ComentarioAnonimo"})
+public class ComentarioAnonimo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,17 +35,21 @@ public class ComentarioController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String content = request.getParameter("fname");
         String idNew = request.getParameter("idNew");
+
+        String nameAnonim = request.getParameter("nameAnonimo");
+
         int estado = 1;
 
-        List<Categoria> categories = categoryDAO.getCategories();
-        request.setAttribute("Categories", categories);
-        
-        String idusuario = request.getParameter("IdUsuario");
-       
-        ComentarioDAO.insertCommentary(new Comentario(estado, content, Integer.parseInt(idusuario, 10), Integer.parseInt(idNew, 10)));
+        // inserta usuarui
+        AnonimoDAO.signInUserAninim(new AnonimoClass(nameAnonim));
 
+        //traé la id usuario
+        int idusuano = AnonimoDAO.trateid(nameAnonim);
+
+        ComentarioDAO.insertCommentaryAnonim(new Comentario(estado,idusuano, content,  Integer.parseInt(idNew, 10)));
         request.getRequestDispatcher("/ShowNewsController?id=" + idNew).forward(request, response);
     }
 

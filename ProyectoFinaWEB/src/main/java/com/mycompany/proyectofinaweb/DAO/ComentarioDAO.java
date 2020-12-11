@@ -51,6 +51,38 @@ public class ComentarioDAO {
         return 0;
     }
 
+     public static int insertCommentaryAnonim(Comentario element) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_creaComentarioAnonimo(?,?,?,?);";
+            CallableStatement statement = con.prepareCall(sql);
+
+            statement.setInt(1, element.getEstado());
+            statement.setString(2, element.getContenido());
+            statement.setInt(3, element.getIdanonimo());
+            statement.setInt(4, element.getIdnoticia());
+
+            return statement.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ComentarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+
+    
+    
+    
+    
     public static int insertCommentaryEditor(String contenido,int idusu,int idNew) {
         Connection con = null;
         try {

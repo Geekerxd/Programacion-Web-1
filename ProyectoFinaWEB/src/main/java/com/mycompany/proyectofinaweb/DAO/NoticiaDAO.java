@@ -54,6 +54,36 @@ public class NoticiaDAO {
         }
         return 0;
     }
+    
+     public static int FavNoti(int idUsu, int idNwe) {
+        Connection con = null;
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_FavUnaNoticia(?,?);";
+            CallableStatement statement = con.prepareCall(sql);
+ 
+            statement.setInt(1, idUsu); 
+            statement.setInt(2, idNwe);
+ 
+
+            //statement.setString(4, news.getImagePath());
+            return statement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return 0;
+    }
+    
+    
+    
     public static int AceptaNew(int idNew) {
         Connection con = null;
         try {
@@ -245,6 +275,56 @@ public class NoticiaDAO {
         return news;
     }
 
+      public static List<Noticia> getNewsFav(int userId) {
+        List<Noticia> news = new ArrayList<>();
+        Connection con = null;
+
+        try {
+            con = DbConection.getConnection();
+            String sql = "CALL sp_FavObtieneSusNoti(?);";
+            CallableStatement statement = con.prepareCall(sql);
+            
+            
+            statement.setInt(1,userId);
+            
+            
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt(1);
+                String title = result.getString(2);
+                int visitas = result.getInt(3);
+                String fecha = result.getString(4);
+                String contendido = result.getString(5);
+                int estado = result.getInt(6);
+                int likes = result.getInt(7);
+                int dislikes = result.getInt(8);
+                int idusuario = result.getInt(9);
+                int idCategoria = result.getInt(10);
+                Categoria category = categoryDAO.getCategories(idCategoria);
+                String descri = result.getString(11);
+                String thumbnail = result.getString(12);
+                
+                news.add(new Noticia(id, title, visitas, fecha, contendido, estado, likes, dislikes,
+                        idusuario, category, descri, thumbnail));
+
+            }
+            return news;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(NoticiaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return news;
+    }
+
+     
+     
     public static List<Noticia> getNewsByUserIdEDITOR( ) {
         List<Noticia> news = new ArrayList<>();
         Connection con = null;

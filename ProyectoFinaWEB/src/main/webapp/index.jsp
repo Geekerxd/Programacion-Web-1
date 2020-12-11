@@ -383,7 +383,7 @@
                 <div class="row A-left">
                     <i class="fas fa-hand-point-up" :hover><%= element.getLikes()%></i>
                     <i class="fas fa-hand-point-down" :hover><%= element.getDislikes()%></i>
-                    <i class="fas fa-comment" :hover>falta</i>
+                    <i class="fas fa-comment" :hover>0</i>
                     <i class="fas fa-ellipsis-h" :hover></i>
                     <p class="fecha"><%= element.getFecha()%></p>
                 </div>

@@ -42,17 +42,19 @@ public class ShowNewsController extends HttpServlet {
             throws ServletException, IOException {
 
         String idNews = request.getParameter("id");
+
         List<Categoria> categories = categoryDAO.getCategories();
+        request.setAttribute("Categories", categories);
+
         Noticia element = NoticiaDAO.getNew(Integer.parseInt(idNews, 10));
 
         List<Imagen> images = ImageDAO.getImagesByNoti(Integer.parseInt(idNews, 10));
-        
+
         List<Comentario> commentaries = ComentarioDAO.getCommentariesByNew(Integer.parseInt(idNews, 10));
 
-        request.setAttribute("Categories", categories);
         request.setAttribute("New", element);
         request.setAttribute("Images", images);
-         request.setAttribute("Comentarios", commentaries);
+        request.setAttribute("Comentarios", commentaries);
         request.getRequestDispatcher("UnaNoticia.jsp").forward(request, response);
     }
 
@@ -67,8 +69,8 @@ public class ShowNewsController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            throws ServletException, IOException { 
+        processRequest(request, response); 
     }
 
     /**

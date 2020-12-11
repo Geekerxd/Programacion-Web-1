@@ -41,6 +41,14 @@ public class Comentario {
         this.idusuario = idusuario;
         this.idnoticia = idnoticia;
     }
+       public Comentario(int estado, int idanonimo,  String contenido, int idnoticia) {
+        this.estado = estado;
+        this.idanonimo = idanonimo;
+         this.idnoticia = idnoticia;
+        this.contenido = contenido;
+        
+       
+    }
       public Comentario(int estado, String contenido,usuario ElUsuario, int idnoticia) {
         this.estado = estado;
         this.contenido = contenido;
